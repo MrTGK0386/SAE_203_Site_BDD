@@ -1,6 +1,6 @@
 <?php
 
-include_once 'SQLConnection.php';
+include_once 'sql_usage/SQLConnection.php';
 
 $tableName = 'earthQuake';
 
@@ -30,7 +30,7 @@ if (mysqli_num_rows($result) > 0) {
   `time.month` varchar(255) DEFAULT NULL,
   `time.second` varchar(255) DEFAULT NULL,
   `time.year` varchar(255) DEFAULT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8";
-
+}
 $statement = mysqli_prepare($conn, $sql) or die(mysqli_error($conn));
 mysqli_stmt_execute($statement) or die(mysqli_error($conn));
 
@@ -238,5 +238,4 @@ $addData = "INSERT INTO `$tableName` (`id`, `impact.gap`, `impact_magnitude`, `i
 $statement2 = mysqli_prepare($conn,$addData) or die(mysqli_error($conn));
 mysqli_stmt_bind_param($statement2,"sffiffsffsisssssss",$id,$impact_gap,$impact_magnitude,$impact_significance,$location_depth,$location_distance,$location_full,$location_latitude,$location_longitude,$location_name,$time_day,$time_epoch,$time_full,$time_hour,$time_minute,$time_month,$time_second,$time_year) or die(mysqli_error($conn));
 mysqli_stmt_execute($statement2) or die(mysqli_error($conn));
-mysqli_close($conn);
 ?>
