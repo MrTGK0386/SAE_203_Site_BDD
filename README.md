@@ -2,4 +2,7 @@
 Super repo pour la SAE 203, [BUT MMI Année 1 TPA2]
 
 ## Etienne Init
+
+## Gaetan Init
+
 ## Julien Init
