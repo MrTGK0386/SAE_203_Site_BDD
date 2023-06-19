@@ -16,7 +16,7 @@ if (mysqli_num_rows($result) > 0) {
         username VARCHAR(50) NOT NULL,
         password VARCHAR(255) NOT NULL,
         email VARCHAR(100) NOT NULL,
-        admin BOOLEAN NOT NULL
+        admin BIT(1) NOT NULL
     )";
 
     if (mysqli_query($conn, $sql)) {
