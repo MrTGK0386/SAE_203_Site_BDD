@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (mysqli_num_rows($checkResult) > 0) {
         $error = "Username already exists";
     } else {
-        $insertQuery = "INSERT INTO users (username, password, email, admin) VALUES ('$username', '$password', '$email', 'false')";
+        $insertQuery = "INSERT INTO users (username, password, email, admin) VALUES ('$username', '$password', '$email', 0)";
         if (mysqli_query($conn, $insertQuery)) {
             $_SESSION['username'] = $username;
             header("Location: connection.php");
