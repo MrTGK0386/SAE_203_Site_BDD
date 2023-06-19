@@ -1,5 +1,5 @@
 <?php
-include_once 'SQLConnection.php';
+include_once '../sql_usage/SQLConnection.php';
 
 session_start();
 
