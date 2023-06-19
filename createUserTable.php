@@ -22,7 +22,8 @@ if (mysqli_num_rows($result) > 0) {
     mysqli_stmt_execute($statement) or die(mysqli_error($conn));
 
     $addRoot = "INSERT INTO users (username, password, email, admin) VALUES ('root', 'root', 'root@gmail.com', 1)";
-    $statement2 = mysqli_prepare($conn,$addRoot)
+    $statement2 = mysqli_prepare($conn,$addRoot) or die(mysqli_error($conn));
+
 
     if (mysqli_query($conn, $sql)) {
         // echo "Table '$tableName' created successfully.";
