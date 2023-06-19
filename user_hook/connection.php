@@ -17,12 +17,15 @@ session_start();
         } else {
             echo '<div class="login-state">Not logged in</div>';
         }
+        echo '<button onclick="location.href=\'../index.php\'">Back</button>';
+
         ?>
         <button onclick="toggleProfilePopup()">Profile</button>
     </header>
 
     <div id="profile-popup" style="display: none;">
     <?php
+
     if (isset($_SESSION['username'])) {
         echo 'Welcome, ' . $_SESSION['username'] . '!';
         echo '<br><button onclick="location.href=\'logout.php\'">Logout</button>';
