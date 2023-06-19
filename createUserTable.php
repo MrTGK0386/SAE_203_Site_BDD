@@ -1,13 +1,12 @@
 <?php
 
 include_once 'SQLConnection.php';
-
 $tableName = 'users';
 
 // Check if the table exists
 $result = mysqli_query($conn, "SHOW TABLES LIKE '$tableName'");
 if (mysqli_num_rows($result) > 0) {
-    echo "Table '$tableName' already exists.";
+    echo "<script>console.log('Table $tableName already exists.');</script>";
     // Handle the case when the table exists
 } else {
     // Create the table
@@ -20,7 +19,13 @@ if (mysqli_num_rows($result) > 0) {
     )";
 
     if (mysqli_query($conn, $sql)) {
-        echo "Table '$tableName' created successfully.";
+        // echo "Table '$tableName' created successfully.";
+        $insertQuery = "INSERT INTO users (username, password, email, admin) VALUES ('root', 'root', 'root@gmail.com', 1)";
+        if (mysqli_query($conn, $insertQuery)){
+            // echo "add user admin";
+        };
+
+
     } else {
         echo "Error creating table: " . mysqli_error($conn);
     }

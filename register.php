@@ -13,9 +13,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['password'];
     $email = $_POST['email'];
 
-
-    
-
     if (!$conn) {
         die("La connexion a échoué : " . mysqli_connect_error());
     }

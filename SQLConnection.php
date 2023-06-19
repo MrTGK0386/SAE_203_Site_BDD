@@ -13,7 +13,7 @@ if (!$conn) {
     die("La connexion a échoué : " . mysqli_connect_error());
 }
 else{
-    echo "connection reussie";
+    echo "<script>console.log('connection reussie')</script>";
 };
 
 ?>
