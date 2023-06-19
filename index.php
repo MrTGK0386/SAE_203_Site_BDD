@@ -13,7 +13,7 @@
     <?php
     include_once 'sql_usage/SQLconnection.php';
     include_once 'sql_usage/createUserTable.php';
-    include_once 'sql_usage/createEathQuakeTable.php';
+    include_once 'sql_usage/createEarthQuakeTable.php';
     ?>
 </head>
 <body class="d-flex flex-column min-vh-100">
@@ -23,12 +23,34 @@
     <!-- inclusion des variables et fonctions -->
 </div>
 <div>
+    <form action="index.php" method="post">
+        Nom de la table : <input type="text" name="nomTable">
+        <input type="submit" name="afficher">
+    </form>
+    <?php
+    $nomTable=$_POST['nomTable'];
+    function nbEnregistrement ($nomTable){
 
+        $requete = "SELECT * FROM $nomTable";
+        $statement = mysqli_prepare($conn, $requete) or die (mysqli_error($conn));
+        mysqli_stmt_execute($statement) or die (mysqli_error($conn));
+
+        $resultat = mysqli_stmt_get_result($statement);
+        while ($row = mysqli_fetch_array($resultat, MYSQLI_ASSOC)){
+            echo ($row);
+        }
+
+        mysqli_close($conn) or die(mysqli_error($conn));
+
+    }
+
+
+    ?>
 </div>
 
 
 <!-- inclusion du bas de page du site -->
-<?php include_once('footer.php'); ?>
+<?php //include_once('footer.php'); ?>
 </body>
 </html>
 
