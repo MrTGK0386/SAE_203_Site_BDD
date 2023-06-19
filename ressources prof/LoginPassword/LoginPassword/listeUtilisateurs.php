@@ -1,5 +1,5 @@
 <?php
-require "protectionAdmin.php";// code qui protege les pages qui ne doivent pas etre accessibles sans login/password
+require "protectionAdmin.php";// code qui protege les HTML_elements qui ne doivent pas etre accessibles sans login/password
 ?>
 <HTML>
 	<meta charset="utf-8"/>

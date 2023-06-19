@@ -478,7 +478,7 @@ THREE.TrackballControls = function ( object, domElement ) {
 		switch ( event.deltaMode ) {
 
 			case 2:
-				// Zoom in pages
+				// Zoom in HTML_elements
 				_zoomStart.y -= event.deltaY * 0.025;
 				break;
 
