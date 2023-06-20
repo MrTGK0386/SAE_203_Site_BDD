@@ -11,7 +11,7 @@ if (mysqli_num_rows($result) > 0) {
     // Handle the case when the table exists
 } else {
     // Create the table
-    $sql = "CREATE TABLE `$tableName` (
+    $sql = "CREATE TABLE $tableName (
     `id` varchar(30) DEFAULT NULL,
     `impact.gap` float DEFAULT NULL,
     `impact_magnitude` float DEFAULT NULL,
@@ -35,7 +35,7 @@ if (mysqli_num_rows($result) > 0) {
     mysqli_stmt_execute($statement) or die(mysqli_error($conn));
 
 
-    $addData = "INSERT INTO `$tableName` (`id`,`impact.gap`,`impact_magnitude`,`impact.significance`,`location.depth`,`location-distance`,`location.full`,`location_latitude`,`location_longitude`,`location.name`,`time.day`,`time.epoch`,`time.full`,`time.hour`,`time.minute`,`time.month`,`time.second`,`time.year`) VALUES
+    $addData = "INSERT INTO $tableName (`id`,`impact.gap`,`impact_magnitude`,`impact.significance`,`location.depth`,`location-distance`,`location.full`,`location_latitude`,`location_longitude`,`location.name`,`time.day`,`time.epoch`,`time.full`,`time.hour`,`time.minute`,`time.month`,`time.second`,`time.year`) VALUES
  ('nc72666881',122.0,1.43,31,15.12,0.1034,'13km E of Livermore, California',37.6723333,-121.619,'California',27,1469593183550,'2016-07-27 00:19:43',0,19,7,43,2016)
 ,('us20006i0y',30.0,4.9,371,97.07,1.439,'58km WNW of Pakokku, Burma',21.5146,94.5721,'Burma',27,1469593228220,'2016-07-27 00:20:28',0,20,7,28,2016)
 ,('nc72666891',249.0,0.06,0,4.39,0.02743,'12km SE of Mammoth Lakes, California',37.5765,-118.8591667,'California',27,1469593897150,'2016-07-27 00:31:37',0,31,7,37,2016)
