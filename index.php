@@ -22,6 +22,11 @@
 </div>
 <div>
     <div>
+        <form method="POST" action="index.php">
+            <input type="submit" name="trigger" value="DROP TABLE"/>
+        </form>
+    </div>
+    <div>
         <form action="index.php" method="post">
             Nom de la table : <input type="text" name="nomTable">
             <input type="submit" name="afficher">
@@ -30,7 +35,7 @@
     </div>
     <?php
     function nbEnregistrement($nomTable, $conn) {
-        $requete = "SELECT * FROM $nomTable";
+        $requete = "SELECT * FROM SAE203_$nomTable";
         $resultat = mysqli_query($conn, $requete);
         if (!$resultat) {
             die("Erreur lors de l'exécution de la requête: " . mysqli_error($conn));
