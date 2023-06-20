@@ -13,7 +13,7 @@
     <?php
     include_once 'sql_usage/SQLconnection.php';
     include_once 'sql_usage/createUserTable.php';
-    // include_once 'sql_usage/createEarthQuakeTable.php';
+    include_once 'sql_usage/createEarthQuakeTable.php';
     ?>
 </head>
 <body class="d-flex flex-column min-vh-100">

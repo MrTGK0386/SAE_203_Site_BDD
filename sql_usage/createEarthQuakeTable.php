@@ -12,29 +12,29 @@ if (mysqli_num_rows($result) > 0) {
 } else {
     // Create the table
     $sql = "CREATE TABLE `$tableName` (
-  `id` varchar(30) DEFAULT NULL,
-  `impact.gap` float DEFAULT NULL,
-  `impact_magnitude` float DEFAULT NULL,
-  `impact.significance` int(11) DEFAULT NULL,
-  `location.depth` float DEFAULT NULL,
-  `location-distance` float DEFAULT NULL,
-  `location.full` varchar(255) DEFAULT NULL,
-  `location_latitude` float DEFAULT NULL,
-  `location_longitude` float DEFAULT NULL,
-  `location.name` varchar(255) DEFAULT NULL,
-  `time.day` int(11) DEFAULT NULL,
-  `time.epoch` varchar(255) DEFAULT NULL,
-  `time.full` varchar(255) DEFAULT NULL,
-  `time.hour` varchar(255) DEFAULT NULL,
-  `time.minute` varchar(255) DEFAULT NULL,
-  `time.month` varchar(255) DEFAULT NULL,
-  `time.second` varchar(255) DEFAULT NULL,
-  `time.year` varchar(255) DEFAULT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8";
-}
-$statement = mysqli_prepare($conn, $sql) or die(mysqli_error($conn));
-mysqli_stmt_execute($statement) or die(mysqli_error($conn));
+    `id` varchar(30) DEFAULT NULL,
+    `impact.gap` float DEFAULT NULL,
+    `impact_magnitude` float DEFAULT NULL,
+    `impact.significance` int(11) DEFAULT NULL,
+    `location.depth` float DEFAULT NULL,
+    `location-distance` float DEFAULT NULL,
+    `location.full` varchar(255) DEFAULT NULL,
+    `location_latitude` float DEFAULT NULL,
+    `location_longitude` float DEFAULT NULL,
+    `location.name` varchar(255) DEFAULT NULL,
+    `time.day` int(11) DEFAULT NULL,
+    `time.epoch` varchar(255) DEFAULT NULL,
+    `time.full` varchar(255) DEFAULT NULL,
+    `time.hour` varchar(255) DEFAULT NULL,
+    `time.minute` varchar(255) DEFAULT NULL,
+    `time.month` varchar(255) DEFAULT NULL,
+    `time.second` varchar(255) DEFAULT NULL,
+    `time.year` varchar(255) DEFAULT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8";
 
-$addData = "INSERT INTO `$tableName` (`id`, `impact.gap`, `impact_magnitude`, `impact.significance`, `location.depth`, `location-distance`, `location.full`, `location_latitude`, `location_longitude`, `location.name`, `time.day`, `time.epoch`, `time.full`, `time.hour`, `time.minute`, `time.month`, `time.second`, `time.year`) VALUES
+    $statement = mysqli_prepare($conn, $sql);
+    mysqli_stmt_execute($statement) or die(mysqli_error($conn));
+
+    $addData = "INSERT INTO `$tableName` (`id`, `impact.gap`, `impact_magnitude`, `impact.significance`, `location.depth`, `location-distance`, `location.full`, `location_latitude`, `location_longitude`, `location.name`, `time.day`, `time.epoch`, `time.full`, `time.hour`, `time.minute`, `time.month`, `time.second`, `time.year`) VALUES
 ('nc72666881', 122, 1.43, 31, 15.12, 0.1034, '13km E of Livermore, California', 37.6723, -121.619, 'California', 27, '1469593183550', '2016-07-27 00:19:43', '0', '19', '7', '43', '2016'),
 ('us20006i0y', 30, 4.9, 371, 97.07, 1.439, '58km WNW of Pakokku, Burma', 21.5146, 94.5721, 'Burma', 27, '1469593228220', '2016-07-27 00:20:28', '0', '20', '7', '28', '2016'),
 ('nc72666891', 249, 0.06, 0, 4.39, 0.02743, '12km SE of Mammoth Lakes, California', 37.5765, -118.859, 'California', 27, '1469593897150', '2016-07-27 00:31:37', '0', '31', '7', '37', '2016'),
@@ -235,7 +235,11 @@ $addData = "INSERT INTO `$tableName` (`id`, `impact.gap`, `impact_magnitude`, `i
 ('ci37640776', 48, 1.82, 51, 6.73, 0.1328, '24km ESE of Julian, CA', 33.0133, -116.357, 'California', 27, '1469625571060', '2016-07-27 09:19:31', '9', '19', '7', '31', '2016')";
 
 
-$statement2 = mysqli_prepare($conn,$addData) or die(mysqli_error($conn));
-mysqli_stmt_bind_param($statement2,"sffiffsffsisssssss",$id,$impact_gap,$impact_magnitude,$impact_significance,$location_depth,$location_distance,$location_full,$location_latitude,$location_longitude,$location_name,$time_day,$time_epoch,$time_full,$time_hour,$time_minute,$time_month,$time_second,$time_year) or die(mysqli_error($conn));
-mysqli_stmt_execute($statement2) or die(mysqli_error($conn));
+    $statement2 = mysqli_prepare($conn,$addData) or die(mysqli_error($conn));
+//mysqli_stmt_bind_param($statement2,"sffiffsffsisssssss",$id,$impact_gap,$impact_magnitude,$impact_significance,$location_depth,$location_distance,$location_full,$location_latitude,$location_longitude,$location_name,$time_day,$time_epoch,$time_full,$time_hour,$time_minute,$time_month,$time_second,$time_year) or die(mysqli_error($conn));
+    mysqli_stmt_execute($statement2) or die(mysqli_error($conn));
+}
+
+
+
 ?>
