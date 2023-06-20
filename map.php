@@ -43,11 +43,11 @@
             }
             while ($row = mysqli_fetch_assoc($resultat)) {
                 if ($row['impact_magnitude'] >1){
-                echo"<script>addPoint($row[location_latitude], $row[location_longitude], 'ico.png', 0.05);</script>";
+                echo"<script>addPoint($row[location_latitude], $row[location_longitude], 'assets/ico.png', 0.05);</script>";
                 }
 
             else{
-                echo"<script>addPoint($row[location_latitude], $row[location_longitude], 'ico2.png', 0.02);</script>";
+                echo"<script>addPoint($row[location_latitude], $row[location_longitude], 'assets/ico2.png', 0.02);</script>";
 
                 }
             }
