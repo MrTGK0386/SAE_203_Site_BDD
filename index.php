@@ -20,7 +20,59 @@
     <?php  //include_once('HTML_elements/headers/headerRandom.html'); ?>
     <!-- inclusion des variables et fonctions -->
 </div>
+<div id="cesiumContainer">
+    <script src="https://cesium.com/downloads/cesiumjs/releases/1.84/Build/Cesium/Cesium.js"></script>
+    <script>
+        // Set your Cesium ion access token here
+        Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI3NmJlOTBmZS0zMDQ4LTQyNmUtYTViOS04OTEyZDdmZThmMDciLCJpZCI6MTQ4MDA3LCJpYXQiOjE2ODcyNDI5ODR9.5BzgewFG_qqt70bHlei4_AtSAPYm7LZ0Gr32eo_tS3I';
+
+        // Create a Cesium viewer
+        var viewer = new Cesium.Viewer('cesiumContainer', {
+            shouldAnimate: true,
+            animation: false,
+            timeline: false,
+        });
+
+        // Function to add a point at a given latitude and longitude
+        function addPoint(latitude, longitude, type, size) {
+
+            viewer.entities.add({
+                position: Cesium.Cartesian3.fromDegrees(longitude, latitude),
+                billboard: {
+                    image: type,
+                    scale: size,
+                    // color: Cesium.Color.RED
+                }
+            });
+
+        }
+
+
+    </script>
+    <?php
+    include_once 'sql_usage/SQLconnection.php';
+    $requete = "SELECT * FROM sae203_eq";
+    $resultat = mysqli_query($conn, $requete);
+    if (!$resultat) {
+        die("Erreur lors de l'exécution de la requête: " . mysqli_error($conn));
+    }
+    while ($row = mysqli_fetch_assoc($resultat)) {
+        if ($row['impact_magnitude'] >1){
+            echo"<script>addPoint($row[location_latitude], $row[location_longitude], 'assets/ico.png', 0.05);</script>";
+        }
+
+        else{
+            echo"<script>addPoint($row[location_latitude], $row[location_longitude], 'assets/ico2.png', 0.02);</script>";
+
+        }
+    }
+
+    ?>
+</div>
 <div>
+    <div>
+        <p type="button" name="trigger" value="DROP TABLE"/>
+    </div>
     <div>
         <form action="index.php" method="post">
             Nom de la table : <input type="text" name="nomTable">
@@ -30,7 +82,7 @@
     </div>
     <?php
     function nbEnregistrement($nomTable, $conn) {
-        $requete = "SELECT * FROM $nomTable";
+        $requete = "SELECT * FROM SAE203_$nomTable";
         $resultat = mysqli_query($conn, $requete);
         if (!$resultat) {
             die("Erreur lors de l'exécution de la requête: " . mysqli_error($conn));
@@ -52,8 +104,39 @@
 </div>
 
 
+
 <!-- inclusion du bas de page du site -->
 <?php //include_once('footer.php'); ?>
+<script>
+    viewer.zoomTo(viewer.entities);
+</script>
 </body>
 </html>
 
+<style>
+    #cesiumContainer {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    #cesiumContainer canvas{
+        height: 600px;
+    }
+    #cesiumContainer .cesium-viewer-selectionIndicatorContainer{
+        display: none;
+    }
+    #cesiumContainer .cesium-viewer-bottom{
+        display: none;
+    }
+    #cesiumContainer .cesium-viewer-infoBoxContainer{
+        display: none;
+    }
+    #cesiumContainer .cesium-viewer-toolbar{
+        display: none;
+    }
+    #cesiumContainer .cesium-button{
+        display: none;
+    }
+
+</style>
