@@ -23,7 +23,7 @@ if (mysqli_num_rows($result) > 0) {
 
     $addRoot = "INSERT INTO users (username, password, email, admin) VALUES ('root', 'root', 'root@gmail.com', 1)";
     $statement2 = mysqli_prepare($conn,$addRoot) or die(mysqli_error($conn));
-    mysqli_stmt_bind_param($statement2,"sssi",$username,$password,$email,$admin) or die(mysqli_error($conn));
+    // mysqli_stmt_bind_param($statement2,"isssi",$username,$password,$email,$admin) or die(mysqli_error($conn));
     mysqli_stmt_execute($statement2) or die(mysqli_error($conn));
 
     //echo "Error creating table: " . mysqli_error($conn);
