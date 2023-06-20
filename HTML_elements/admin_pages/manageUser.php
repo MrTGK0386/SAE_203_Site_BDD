@@ -6,6 +6,7 @@
 <body>
     <?php
     include_once '../../sql_usage/SQLConnection.php';
+    
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (isset($_POST['action'])) {
@@ -27,13 +28,24 @@
 
                     deleteUser($conn, $userId);
                 }
+            } elseif ($action === 'create') {
+                if (isset($_POST['username'], $_POST['password'], $_POST['email'], $_POST['admin'])) {
+                    $username = $_POST['username'];
+                    $password = $_POST['password'];
+                    $email = $_POST['email'];
+                    $admin = $_POST['admin'];
+
+                    createUser($conn, $username, $password, $email, $admin);
+                }
             }
         }
     }
 
     // Function to retrieve all rows from the users table
+    
     function getUsers($conn) {
-        $query = "SELECT * FROM users";
+        $tableName = "sae203_users";
+        $query = "SELECT * FROM $tableName";
         $result = mysqli_query($conn, $query);
 
         if (!$result) {
@@ -48,6 +60,7 @@
 
     // Function to update a user row
     function updateUser($conn, $userId, $username, $password, $email, $admin) {
+        $tableName = "sae203_users";
         $username = mysqli_real_escape_string($conn, $username);
         $password = mysqli_real_escape_string($conn, $password);
         $email = mysqli_real_escape_string($conn, $email);
@@ -56,7 +69,7 @@
         // Ensure the admin value is properly quoted in the SQL query
         $admin = $admin == '1' ? '1' : '0';
     
-        $query = "UPDATE users SET username='$username', password='$password', email='$email', admin=$admin WHERE id=$userId";
+        $query = "UPDATE $tableName SET username='$username', password='$password', email='$email', admin=$admin WHERE id=$userId";
         $result = mysqli_query($conn, $query);
     
         if (!$result) {
@@ -64,14 +77,13 @@
         }
     
         header("Location: ".$_SERVER['PHP_SELF']);
-
-        echo "test";
+        exit();
     }
     
-
     // Function to delete a user row
     function deleteUser($conn, $userId) {
-        $query = "DELETE FROM users WHERE id=$userId";
+        $tableName = "sae203_users";
+        $query = "DELETE FROM $tableName WHERE id=$userId";
         $result = mysqli_query($conn, $query);
 
         if (!$result) {
@@ -79,6 +91,29 @@
         }
 
         header("Location: ".$_SERVER['PHP_SELF']);
+        exit();
+    }
+
+    // Function to create a new user
+    function createUser($conn, $username, $password, $email, $admin) {
+        $tableName = "sae203_users";
+        $username = mysqli_real_escape_string($conn, $username);
+        $password = mysqli_real_escape_string($conn, $password);
+        $email = mysqli_real_escape_string($conn, $email);
+        $admin = mysqli_real_escape_string($conn, $admin);
+    
+        // Ensure the admin value is properly quoted in the SQL query
+        $admin = $admin == '1' ? '1' : '0';
+    
+        $query = "INSERT INTO $tableName (username, password, email, admin) VALUES ('$username', '$password', '$email', $admin)";
+        $result = mysqli_query($conn, $query);
+    
+        if (!$result) {
+            die("Erreur lors de la création de l'utilisateur: " . mysqli_error($conn));
+        }
+    
+        header("Location: ".$_SERVER['PHP_SELF']);
+        exit();
     }
 
     // Display the user table
@@ -116,6 +151,7 @@
                 <td>
                     <button type="submit">Update</button>
                     </form>
+                    
                     <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                         <input type="hidden" name="userId" value="<?php echo $user['id']; ?>">
                         <input type="hidden" name="action" value="delete">
@@ -124,6 +160,26 @@
                 </td>
             </tr>
         <?php endforeach; ?>
+        <tr>
+            <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                <td>
+                    <input type="text" name="username" placeholder="Username">
+                </td>
+                <td>
+                    <input type="text" name="password" placeholder="Password">
+                </td>
+                <td>
+                    <input type="text" name="email" placeholder="Email">
+                </td>
+                <td>
+                    <input type="text" name="admin" placeholder="Admin">
+                </td>
+                <td>
+                    <input type="hidden" name="action" value="create">
+                    <button type="submit">Create</button>
+                </td>
+            </form>
+        </tr>
     </table>
 
 </body>
