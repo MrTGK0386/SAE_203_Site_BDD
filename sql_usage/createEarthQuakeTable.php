@@ -35,13 +35,12 @@ if (mysqli_num_rows($result) > 0) {
     mysqli_stmt_execute($statement) or die(mysqli_error($conn));
 
     $file = 'sql_usage/csv/earthquake.csv';
-    $addData = <<<eof
+    $addData = "
     LOAD DATA INFILE '$file'
      INTO TABLE $tableName
-     FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"'
+     FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '\"'
      LINES TERMINATED BY '\n'
-    (id,impact.gap,impact_magnitude,impact.significance,location.depth,location-distance,location.full,location_latitude,location_longitude,location.name,time.day,time.epoch,time.full,time.hour,time.minute,time.month,time.second,time.year)
-    eof;
+     IGNORE 1 LINES";
 
     $conn->query($addData);
 
