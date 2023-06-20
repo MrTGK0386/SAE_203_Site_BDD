@@ -11,16 +11,13 @@
     <link href="HTML_elements/headers/style/style.css"
           rel="stylesheet">
     <?php
-    include_once 'sql_usage/SQLconnection.php';
-    include_once 'sql_usage/createUserTable.php';
-    include_once 'sql_usage/createEarthQuakeTable.php';
-    include_once  'sql_usage/createMeteorite.php';
+    include_once 'sql_usage/createTables.php'
     ?>
 </head>
 <body class="d-flex flex-column min-vh-100">
 
 <div id="header" class="container dynamic">
-    <?php  include_once('HTML_elements/headers/headerRandom.html'); ?>
+    <?php  //include_once('HTML_elements/headers/headerRandom.html'); ?>
     <!-- inclusion des variables et fonctions -->
 </div>
 <div>
