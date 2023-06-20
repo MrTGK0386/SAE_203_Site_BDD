@@ -68,9 +68,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <input type="password" id="password" name="password" required>
         </div>
         <div>
-            <button type="submit">Submit</button> <?php echo ' or <button onclick="location.href=\'login.php\'">Login</button>' ?>
+            <button type="submit">Submit</button>
         </div>
     </form>
+    <?php echo ' or <button onclick="location.href=\'login.php\'">Login</button>' ?>
     <?php echo '<button onclick="location.href=\'index.php\'">Menu</button>' ?>
     
 </body>
