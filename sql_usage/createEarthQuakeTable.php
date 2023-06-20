@@ -2,7 +2,7 @@
 
 include_once 'sql_usage/SQLConnection.php';
 
-$tableName = 'earthQuake';
+$tableName = 'eq';
 
 // Check if the table exists
 $result = mysqli_query($conn, "SHOW TABLES LIKE '$tableName'");
@@ -34,15 +34,15 @@ if (mysqli_num_rows($result) > 0) {
     $statement = mysqli_prepare($conn, $sql);
     mysqli_stmt_execute($statement) or die(mysqli_error($conn));
 
+    $file = 'csv/earthquake.csv';
     $addData = <<<eof
-    LOAD DATA INFILE 'csv/earthquakes.csv'
-     INTO TABLE tableName
-     FIELDS TERMINATED BY '|' OPTIONALLY ENCLOSED BY '"'
+    LOAD DATA INFILE '$file'
+     INTO TABLE $tableName
+     FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"'
      LINES TERMINATED BY '\n'
-    (field1,field2,field3,etc)
+    (id,impact.gap,impact_magnitude,impact.significance,location.depth,location-distance,location.full,location_latitude,location_longitude,location.name,time.day,time.epoch,time.full,time.hour,time.minute,time.month,time.second,time.year)
     eof;
 
-    $statement2 = mysqli_prepare($conn, $addData) or die(mysqli_error($conn));
-    mysqli_stmt_execute($statement2) or die(mysqli_error($conn));
+
 }
 ?>
