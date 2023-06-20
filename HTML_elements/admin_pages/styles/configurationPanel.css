@@ -1,0 +1,74 @@
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.button {
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+    width: 200px;
+    padding: 20px;
+    cursor: pointer;
+    border-radius: 20px;
+}
+
+.delete {
+    /* transition: 0.3s; */
+    background-color: #ff7575;
+}
+
+.delete:hover {
+    background-color: #e04c4c;
+}
+
+.add {
+    background-color: #75ffa5;
+}
+
+.add:hover {
+    background-color: #4bdb7d;
+}
+
+.edit {
+    background-color: #6bbfff;
+}
+
+.edit:hover {
+    background-color: #3f99df;
+}
+
+.edit_user {
+    background-color: #ffab66;
+}
+
+.edit_user:hover {
+    background-color: #f18e3e;
+}
+
+
+.button-icon {
+    margin-bottom: 10px;
+    width: 30%;
+}
+
+.button img {
+    transition: 0.3s;
+}
+
+.button:hover img {
+    transition: 0.3s;
+    filter: invert(100%)
+}
+
+.button:hover {
+    color: white;
+
+}
+
+.button-name {
+    text-align: center;
+}

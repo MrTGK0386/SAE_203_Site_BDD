@@ -61,29 +61,29 @@
 </html>
 
 <style>
-        #cesiumContainer {
-            width: 100%;
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        }
-        #cesiumContainer canvas{
-            height: 600px;
-        }
-        #cesiumContainer .cesium-viewer-selectionIndicatorContainer{
-            display: none;
-        }
-        #cesiumContainer .cesium-viewer-bottom{
-            display: none;
-        }
-        #cesiumContainer .cesium-viewer-infoBoxContainer{
-            display: none;
-        }
-        #cesiumContainer .cesium-viewer-toolbar{
-            display: none;
-        }
-        #cesiumContainer .cesium-button{
-            display: none;
-        }
+    #cesiumContainer {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    #cesiumContainer canvas{
+        height: 600px;
+    }
+    #cesiumContainer .cesium-viewer-selectionIndicatorContainer{
+        display: none;
+    }
+    #cesiumContainer .cesium-viewer-bottom{
+        display: none;
+    }
+    #cesiumContainer .cesium-viewer-infoBoxContainer{
+        display: none;
+    }
+    #cesiumContainer .cesium-viewer-toolbar{
+        display: none;
+    }
+    #cesiumContainer .cesium-button{
+        display: none;
+    }
 
 </style>
