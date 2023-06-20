@@ -34,7 +34,7 @@ if (mysqli_num_rows($result) > 0) {
     $statement = mysqli_prepare($conn, $sql);
     mysqli_stmt_execute($statement) or die(mysqli_error($conn));
 
-    $file = 'csv/earthquake.csv';
+    $file = 'sql_usage/csv/earthquake.csv';
     $addData = <<<eof
     LOAD DATA INFILE '$file'
      INTO TABLE $tableName
@@ -43,6 +43,7 @@ if (mysqli_num_rows($result) > 0) {
     (id,impact.gap,impact_magnitude,impact.significance,location.depth,location-distance,location.full,location_latitude,location_longitude,location.name,time.day,time.epoch,time.full,time.hour,time.minute,time.month,time.second,time.year)
     eof;
 
+    $conn->query($addData);
 
 }
 ?>
