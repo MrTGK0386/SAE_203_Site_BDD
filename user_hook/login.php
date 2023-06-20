@@ -64,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </form>
     <?php 
         echo '<button onclick="location.href=\'register.php\'">Register</button>';
-        echo '<button onclick="location.href=\'index.php\'">Menu</button>'
+        echo '<button onclick="location.href=\'../index.php\'">Menu</button>'
     ?>
 
 </body>
