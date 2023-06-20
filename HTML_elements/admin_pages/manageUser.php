@@ -52,16 +52,22 @@
         $password = mysqli_real_escape_string($conn, $password);
         $email = mysqli_real_escape_string($conn, $email);
         $admin = mysqli_real_escape_string($conn, $admin);
-
-        $query = "UPDATE users SET username='$username', password='$password', email='$email', admin='$admin' WHERE id=$userId";
+    
+        // Ensure the admin value is properly quoted in the SQL query
+        $admin = $admin == '1' ? '1' : '0';
+    
+        $query = "UPDATE users SET username='$username', password='$password', email='$email', admin=$admin WHERE id=$userId";
         $result = mysqli_query($conn, $query);
-
+    
         if (!$result) {
             die("Erreur lors de la mise à jour de l'utilisateur: " . mysqli_error($conn));
         }
+    
+        header("Location: ".$_SERVER['PHP_SELF']);
 
-        echo "Utilisateur mis à jour avec succès.";
+        echo "test";
     }
+    
 
     // Function to delete a user row
     function deleteUser($conn, $userId) {
@@ -72,7 +78,7 @@
             die("Erreur lors de la suppression de l'utilisateur: " . mysqli_error($conn));
         }
 
-        echo "Utilisateur supprimé avec succès.";
+        header("Location: ".$_SERVER['PHP_SELF']);
     }
 
     // Display the user table
@@ -90,22 +96,25 @@
         <?php foreach ($users as $user): ?>
             <tr>
                 <td>
-                    <input type="text" name="username" value="<?php echo $user['username']; ?>">
-                </td>
-                <td>
-                    <input type="text" name="password" value="<?php echo $user['password']; ?>">
-                </td>
-                <td>
-                    <input type="text" name="email" value="<?php echo $user['email']; ?>">
-                </td>
-                <td>
-                    <input type="text" name="admin" value="<?php echo $user['admin']; ?>">
-                </td>
-                <td>
                     <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                         <input type="hidden" name="userId" value="<?php echo $user['id']; ?>">
                         <input type="hidden" name="action" value="update">
-                        <button type="submit">Update</button>
+                        <input type="text" name="username" value="<?php echo $user['username']; ?>">
+                </td>
+                <td>
+                    <input type="hidden" name="password" value="<?php echo $user['password']; ?>">
+                    <input type="text" name="password" value="<?php echo $user['password']; ?>">
+                </td>
+                <td>
+                    <input type="hidden" name="email" value="<?php echo $user['email']; ?>">
+                    <input type="text" name="email" value="<?php echo $user['email']; ?>">
+                </td>
+                <td>
+                    <input type="hidden" name="admin" value="<?php echo $user['admin']; ?>">
+                    <input type="text" name="admin" value="<?php echo $user['admin']; ?>">
+                </td>
+                <td>
+                    <button type="submit">Update</button>
                     </form>
                     <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                         <input type="hidden" name="userId" value="<?php echo $user['id']; ?>">
