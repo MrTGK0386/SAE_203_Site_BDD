@@ -20,5 +20,4 @@ if (isset($_POST['trigger'])) {
 } else {
     echo "<script>console.log(not dropped)</script>" ;
 }
-
 ?>
