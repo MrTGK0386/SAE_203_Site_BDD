@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>La page de fou - Page d'accueil</title>
-    <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-            rel="stylesheet"
-    >
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+    <link href="HTML_elements/headers/style/style.css"
+          rel="stylesheet">
     <?php
     include_once 'sql_usage/SQLconnection.php';
     include_once 'sql_usage/createUserTable.php';
@@ -20,7 +20,7 @@
 <body class="d-flex flex-column min-vh-100">
 
 <div id="header" class="container dynamic">
-    <?php // include_once('header.php'); ?>
+    <?php  include_once('HTML_elements/headers/headerRandom.html'); ?>
     <!-- inclusion des variables et fonctions -->
 </div>
 <div>
