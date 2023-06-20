@@ -2,7 +2,7 @@
 
 include_once 'sql_usage/SQLConnection.php';
 
-$tableName = 'eq';
+$tableName = 'SAE203_eq';
 
 // Check if the table exists
 $result = mysqli_query($conn, "SHOW TABLES LIKE '$tableName'");

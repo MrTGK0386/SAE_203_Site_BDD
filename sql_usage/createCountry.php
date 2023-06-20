@@ -1,6 +1,6 @@
 <?php
 include_once 'sql_usage/SQLConnection.php';
-$tableName = "pays";
+$tableName = "SAE203_pays";
 
 // Check if the table exists
 $result = mysqli_query($conn, "SHOW TABLES LIKE '$tableName'");
@@ -11,7 +11,7 @@ if (mysqli_num_rows($result) > 0) {
     // Create the table
 
     $sql = "CREATE TABLE $tableName(
-   `country`   VARCHAR(2) NOT NULL PRIMARY KEY
+   `country`   VARCHAR(3) NOT NULL PRIMARY KEY
   ,`latitude`  NUMERIC(10,7) NOT NULL
   ,`longitude` NUMERIC(11,7) NOT NULL
   ,`name`      VARCHAR(44) NOT NULL
@@ -19,7 +19,7 @@ if (mysqli_num_rows($result) > 0) {
     $statement = mysqli_prepare($conn, $sql);
     mysqli_stmt_execute($statement) or die(mysqli_error($conn));
 
-    $addData = " INSERT INTO $tableName(`country`,`latitude`,`longitude`,`name`) VALUES
+    $addData = " INSERT INTO $tableName (`country`,`latitude`,`longitude`,`name`) VALUES
  ('AD',42.546245,1.601554,'Andorre')
 ,('AE',23.424076,53.847818,'EMIRATS ARABES UNIS')
 ,('AF',33.93911,67.709953,'Afghanistan')
@@ -212,7 +212,7 @@ if (mysqli_num_rows($result) > 0) {
 ,('SA',23.885942,45.079162,'ARABIE SAOUDITE')
 ,('SB',-9.64571,160.156194,'Solomon Islands')
 ,('SC',-4.679574,55.491977,'Seychelles')
-,('SD',12.862807,30.217636,'SOUDAN DU SUD')
+,('SDS',12.862807,30.217636,'SOUDAN DU SUD')
 ,('SE',60.128161,18.643501,'SUEDE')
 ,('SG',1.352083,103.819836,'SINGAPOUR')
 ,('SH',-24.143474,-10.030696,'Saint Helena')
@@ -264,7 +264,7 @@ if (mysqli_num_rows($result) > 0) {
 ,('ZA',-30.559482,22.937506,'AFRIQUE DU SUD')
 ,('ZM',-13.133897,27.849332,'Zambie')
 ,('ZW',-19.015438,29.154857,'Zimbabwe')
-,('JE',31.7690400,35.2163300,'JERUSALEM')
+,('JER',31.7690400,35.2163300,'JERUSALEM')
 ,('SD',47.73333,-1.3,'SOUDAN')
 ";
 
