@@ -34,7 +34,7 @@ if (mysqli_num_rows($result) > 0) {
     $statement = mysqli_prepare($conn, $sql);
     mysqli_stmt_execute($statement) or die(mysqli_error($conn));
 
-    $file = 'sql_usage/csv/earthquake.csv';
+    $file = 'C:\laragon\www\SAE_203_Site_BDD\sql_usage\csv\earthquakes.csv';
     $addData = "
     LOAD DATA INFILE '$file'
      INTO TABLE $tableName
