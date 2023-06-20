@@ -13,12 +13,12 @@
             $action = $_POST['action'];
 
             if ($action === 'update') {
-                if (isset($_POST['userId'], $_POST['username'], $_POST['password'], $_POST['email'], $_POST['admin'])) {
+                if (isset($_POST['userId'], $_POST['username'], $_POST['password'], $_POST['email'])) {
                     $userId = $_POST['userId'];
                     $username = $_POST['username'];
                     $password = $_POST['password'];
                     $email = $_POST['email'];
-                    $admin = $_POST['admin'];
+                    $admin = isset($_POST['admin']) ? 1 : 0;
 
                     updateUser($conn, $userId, $username, $password, $email, $admin);
                 }
@@ -29,11 +29,11 @@
                     deleteUser($conn, $userId);
                 }
             } elseif ($action === 'create') {
-                if (isset($_POST['username'], $_POST['password'], $_POST['email'], $_POST['admin'])) {
+                if (isset($_POST['username'], $_POST['password'], $_POST['email'])) {
                     $username = $_POST['username'];
                     $password = $_POST['password'];
                     $email = $_POST['email'];
-                    $admin = $_POST['admin'];
+                    $admin = isset($_POST['admin']) ? 1 : 0;
 
                     createUser($conn, $username, $password, $email, $admin);
                 }
@@ -64,10 +64,6 @@
         $username = mysqli_real_escape_string($conn, $username);
         $password = mysqli_real_escape_string($conn, $password);
         $email = mysqli_real_escape_string($conn, $email);
-        $admin = mysqli_real_escape_string($conn, $admin);
-    
-        // Ensure the admin value is properly quoted in the SQL query
-        $admin = $admin == '1' ? '1' : '0';
     
         $query = "UPDATE $tableName SET username='$username', password='$password', email='$email', admin=$admin WHERE id=$userId";
         $result = mysqli_query($conn, $query);
@@ -100,10 +96,6 @@
         $username = mysqli_real_escape_string($conn, $username);
         $password = mysqli_real_escape_string($conn, $password);
         $email = mysqli_real_escape_string($conn, $email);
-        $admin = mysqli_real_escape_string($conn, $admin);
-    
-        // Ensure the admin value is properly quoted in the SQL query
-        $admin = $admin == '1' ? '1' : '0';
     
         $query = "INSERT INTO $tableName (username, password, email, admin) VALUES ('$username', '$password', '$email', $admin)";
         $result = mysqli_query($conn, $query);
@@ -145,8 +137,7 @@
                     <input type="text" name="email" value="<?php echo $user['email']; ?>">
                 </td>
                 <td>
-                    <input type="hidden" name="admin" value="<?php echo $user['admin']; ?>">
-                    <input type="text" name="admin" value="<?php echo $user['admin']; ?>">
+                    <input type="checkbox" name="admin" value="1" <?php if ($user['admin'] == 1) echo 'checked'; ?>>
                 </td>
                 <td>
                     <button type="submit">Update</button>
@@ -172,7 +163,7 @@
                     <input type="text" name="email" placeholder="Email">
                 </td>
                 <td>
-                    <input type="text" name="admin" placeholder="Admin">
+                    <input type="checkbox" name="admin" value="1">
                 </td>
                 <td>
                     <input type="hidden" name="action" value="create">
@@ -181,6 +172,8 @@
             </form>
         </tr>
     </table>
+
+    <br><button onclick="location.href='configurationPanel.php'">Retour</button>
 
 </body>
 </html>
