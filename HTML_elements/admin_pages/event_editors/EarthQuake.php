@@ -5,7 +5,7 @@
 </head>
 <body>
     <?php
-    include_once '../../sql_usage/SQLConnection.php';
+    include_once '../../../sql_usage/SQLConnection.php';
     
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -298,7 +298,7 @@
         <input type="submit" value="Create">
     </form>
 
-    <br><button onclick="location.href='configurationPanel.php'">Retour</button>
+    <br><button onclick="location.href='../editEventList.php'">Retour</button>
 
 </body>
 </html>
