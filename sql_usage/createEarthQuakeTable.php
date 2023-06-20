@@ -235,11 +235,8 @@ if (mysqli_num_rows($result) > 0) {
 ('ci37640776', 48, 1.82, 51, 6.73, 0.1328, '24km ESE of Julian, CA', 33.0133, -116.357, 'California', 27, '1469625571060', '2016-07-27 09:19:31', '9', '19', '7', '31', '2016')";
 
 
-    $statement2 = mysqli_prepare($conn,$addData) or die(mysqli_error($conn));
+    $statement2 = mysqli_prepare($conn, $addData) or die(mysqli_error($conn));
 //mysqli_stmt_bind_param($statement2,"sffiffsffsisssssss",$id,$impact_gap,$impact_magnitude,$impact_significance,$location_depth,$location_distance,$location_full,$location_latitude,$location_longitude,$location_name,$time_day,$time_epoch,$time_full,$time_hour,$time_minute,$time_month,$time_second,$time_year) or die(mysqli_error($conn));
     mysqli_stmt_execute($statement2) or die(mysqli_error($conn));
 }
-
-
-
 ?>
