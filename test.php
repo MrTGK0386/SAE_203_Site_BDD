@@ -32,9 +32,7 @@
 
         }
 
-        
-        // addPoint(40.7128, -74.0060); // New York
-        // addPoint(51.5074, -0.1278); // London
+
         </script>
         <?php
             include_once 'sql_usage/SQLconnection.php';
@@ -51,7 +49,7 @@
             else{
                 echo"<script>addPoint($row[location_latitude], $row[location_longitude], 'ico2.png', 0.02);</script>";
 
-            }
+                }
             }
 
         ?>
@@ -64,13 +62,13 @@
 
 <style>
         #cesiumContainer {
-            width: 800px;
-            height: 800px;
+            width: 100%;
+            height: 100%;
             margin: 0;
             padding: 0;
         }
         #cesiumContainer canvas{
-            height: 500px;
+            height: 600px;
         }
         #cesiumContainer .cesium-viewer-selectionIndicatorContainer{
             display: none;
