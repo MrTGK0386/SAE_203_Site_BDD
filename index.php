@@ -14,6 +14,7 @@
     include_once 'sql_usage/SQLconnection.php';
     include_once 'sql_usage/createUserTable.php';
     include_once 'sql_usage/createEarthQuakeTable.php';
+    include_once  'sql_usage/createMeteorite.php';
     ?>
 </head>
 <body class="d-flex flex-column min-vh-100">
@@ -23,6 +24,13 @@
     <!-- inclusion des variables et fonctions -->
 </div>
 <div>
+    <div>
+        <form action="index.php" method="post">
+            Nom de la table : <input type="text" name="nomTable">
+            <input type="submit" name="afficher">
+        </form>
+        <br><button onclick="location.href='user_hook/connection.php'">Login</button>
+    </div>
     <?php
     function nbEnregistrement($nomTable, $conn) {
         $requete = "SELECT * FROM $nomTable";
@@ -44,14 +52,6 @@
         nbEnregistrement($nomTable, $conn);
     }
     ?>
-
-    <div>
-        <form action="index.php" method="post">
-            Nom de la table : <input type="text" name="nomTable">
-            <input type="submit" name="afficher">
-        </form>
-        <br><button onclick="location.href='user_hook/connection.php'">Login</button>
-    </div>
 </div>
 
 
