@@ -36,7 +36,7 @@
         </script>
         <?php
             include_once 'sql_usage/SQLconnection.php';
-            $requete = "SELECT * FROM earthquake";
+            $requete = "SELECT * FROM eq";
             $resultat = mysqli_query($conn, $requete);
             if (!$resultat) {
                 die("Erreur lors de l'exécution de la requête: " . mysqli_error($conn));
