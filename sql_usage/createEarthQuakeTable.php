@@ -7,7 +7,7 @@ $tableName = 'earthQuake';
 // Check if the table exists
 $result = mysqli_query($conn, "SHOW TABLES LIKE '$tableName'");
 if (mysqli_num_rows($result) > 0) {
-    echo "Table '$tableName' already exists.";
+    echo "<script>console.log('Table $tableName already exists.');</script>";
     // Handle the case when the table exists
 } else {
     // Create the table
