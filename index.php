@@ -10,6 +10,7 @@
           rel="stylesheet">
     <link href="HTML_elements/headers/style/style.css"
           rel="stylesheet">
+    <link href="https://cesium.com/downloads/cesiumjs/releases/1.106/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
     <?php
     include_once 'sql_usage/createTables.php'
     ?>
@@ -106,36 +107,8 @@
 
 <!-- inclusion du bas de page du site -->
 <?php //include_once('footer.php'); ?>
-<script>
-    viewer.zoomTo(viewer.entities);
-</script>
+
+<script>viewer.zoomTo(viewer.entities);</script>
+<script src="Scripts/main.js"></script>
 </body>
 </html>
-
-<style>
-    #cesiumContainer {
-        width: 100%;
-        height: 100%;
-        margin: 0;
-        padding: 0;
-    }
-    #cesiumContainer canvas{
-        height: 600px;
-    }
-    #cesiumContainer .cesium-viewer-selectionIndicatorContainer{
-        display: none;
-    }
-    #cesiumContainer .cesium-viewer-bottom{
-        display: none;
-    }
-    #cesiumContainer .cesium-viewer-infoBoxContainer{
-        display: none;
-    }
-    #cesiumContainer .cesium-viewer-toolbar{
-        display: none;
-    }
-    #cesiumContainer .cesium-button{
-        display: none;
-    }
-
-</style>
