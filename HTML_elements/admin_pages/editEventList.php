@@ -22,7 +22,7 @@
       <div class="button-name"><p>Tremblements de Terre</p></div>
     </div>
 
-    <div class="button volcano" onclick="location.href='event_editors/Volcano.php'">
+    <div class="button volcano" onclick="location.href='#'">
       <img class="button-icon" src="assets/volcan.png" alt="Button 1 Icon">
       <div class="button-name"><p>Volcans</p></div>
     </div>
