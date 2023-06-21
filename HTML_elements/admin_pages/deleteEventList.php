@@ -32,11 +32,6 @@
       <div class="button-name"><p>Météorites</p></div>
     </div>
 
-    <div class="button country" onclick="alert('Cette partie du site est en construction.\nVeuillez nous excuser pour la gêne occasionnée.')">
-      <img class="button-icon" src="assets/planete.png" alt="Button 1 Icon">
-      <div class="button-name"><p>Pays</p></div>
-    </div>
-
    
   </div>
   <br><button onclick="location.href='configurationPanel.php'">Retour</button>

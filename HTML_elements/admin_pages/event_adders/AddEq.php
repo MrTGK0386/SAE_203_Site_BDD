@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Edit Event Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 </head>
 <body>
     <?php
@@ -95,44 +96,79 @@
     <h2>Create New Event</h2>
 
 
-    <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-        <input type="hidden" name="action" value="create">
+    <form class="form" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+    <input type="hidden" name="action" value="create">
+    <div class="form-group">
         <label>Gap:</label>
-        <input type="text" name="gap"><br>
+        <input class="form-control form-control-sm" type="text" name="gap">
+    </div>
+    <div class="form-group">
         <label>Magnitude:</label>
-        <input type="text" name="magnitude"><br>
+        <input class="form-control form-control-sm" type="text" name="magnitude">
+    </div>
+    <div class="form-group">
         <label>Significance:</label>
-        <input type="text" name="significance"><br>
+        <input class="form-control form-control-sm" type="text" name="significance">
+    </div>
+    <div class="form-group">
         <label>Depth:</label>
-        <input type="text" name="depth"><br>
+        <input class="form-control form-control-sm" type="text" name="depth">
+    </div>
+    <div class="form-group">
         <label>Distance:</label>
-        <input type="text" name="distance"><br>
+        <input class="form-control form-control-sm" type="text" name="distance">
+    </div>
+    <div class="form-group">
         <label>Full Location:</label>
-        <input type="text" name="fullLocation"><br>
+        <input class="form-control form-control-sm" type="text" name="fullLocation">
+    </div>
+    <div class="form-group">
         <label>Latitude:</label>
-        <input type="text" name="latitude"><br>
+        <input class="form-control form-control-sm" type="text" name="latitude">
+    </div>
+    <div class="form-group">
         <label>Longitude:</label>
-        <input type="text" name="longitude"><br>
+        <input class="form-control form-control-sm" type="text" name="longitude">
+    </div>
+    <div class="form-group">
         <label>Location Name:</label>
-        <input type="text" name="locationName"><br>
+        <input class="form-control form-control-sm" type="text" name="locationName">
+    </div>
+    <div class="form-group">
         <label>Day:</label>
-        <input type="text" name="day"><br>
+        <input class="form-control form-control-sm" type="text" name="day">
+    </div>
+    <div class="form-group">
         <label>Epoch:</label>
-        <input type="text" name="epoch"><br>
+        <input class="form-control form-control-sm" type="text" name="epoch">
+    </div>
+    <div class="form-group">
         <label>Full Time:</label>
-        <input type="text" name="fullTime"><br>
+        <input class="form-control form-control-sm" type="text" name="fullTime">
+    </div>
+    <div class="form-group">
         <label>Hour:</label>
-        <input type="text" name="hour"><br>
+        <input class="form-control form-control-sm" type="text" name="hour">
+    </div>
+    <div class="form-group">
         <label>Minute:</label>
-        <input type="text" name="minute"><br>
+        <input class="form-control form-control-sm" type="text" name="minute">
+    </div>
+    <div class="form-group">
         <label>Month:</label>
-        <input type="text" name="month"><br>
+        <input class="form-control form-control-sm" type="text" name="month">
+    </div>
+    <div class="form-group">
         <label>Second:</label>
-        <input type="text" name="second"><br>
+        <input class="form-control form-control-sm" type="text" name="second">
+    </div>
+    <div class="form-group">
         <label>Year:</label>
-        <input type="text" name="year"><br>
-        <input type="submit" value="Create">
-    </form>
+        <input class="form-control form-control-sm" type="text" name="year">
+    </div>
+    <input class="btn btn-primary" type="submit" value="Create">
+</form>
+
 
     <br><button onclick="location.href='../addEventList.php'">Ajouter d'autres événements.</button>
 

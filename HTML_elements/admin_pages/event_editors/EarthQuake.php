@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Edit Event Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 </head>
 <body>
     <?php
@@ -114,7 +115,8 @@
     $events = getEvents($conn);
     ?>
 
-    <table>
+<table class="table">
+    <thead>
         <tr>
             <th>Gap</th>
             <th>Magnitude</th>
@@ -135,74 +137,78 @@
             <th>Year</th>
             <th>Action</th>
         </tr>
+    </thead>
+    <tbody>
         <?php foreach ($events as $event): ?>
             <tr>
                 <td>
                     <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                         <input type="hidden" name="eventId" value="<?php echo $event['id']; ?>">
                         <input type="hidden" name="action" value="update">
-                        <input type="text" name="gap" value="<?php echo $event['impact.gap']; ?>">
+                        <input type="text" name="gap" class="form-control" value="<?php echo $event['impact.gap']; ?>">
                 </td>
                 <td>
-                    <input type="text" name="magnitude" value="<?php echo $event['impact_magnitude']; ?>">
+                    <input type="text" name="magnitude" class="form-control" value="<?php echo $event['impact_magnitude']; ?>">
                 </td>
                 <td>
-                    <input type="text" name="significance" value="<?php echo $event['impact.significance']; ?>">
+                    <input type="text" name="significance" class="form-control" value="<?php echo $event['impact.significance']; ?>">
                 </td>
                 <td>
-                    <input type="text" name="depth" value="<?php echo $event['location.depth']; ?>">
+                    <input type="text" name="depth" class="form-control" value="<?php echo $event['location.depth']; ?>">
                 </td>
                 <td>
-                    <input type="text" name="distance" value="<?php echo $event['location-distance']; ?>">
+                    <input type="text" name="distance" class="form-control" value="<?php echo $event['location-distance']; ?>">
                 </td>
                 <td>
-                    <input type="text" name="fullLocation" value="<?php echo $event['location.full']; ?>">
+                    <input type="text" name="fullLocation" class="form-control" value="<?php echo $event['location.full']; ?>">
                 </td>
                 <td>
-                    <input type="text" name="latitude" value="<?php echo $event['location_latitude']; ?>">
+                    <input type="text" name="latitude" class="form-control" value="<?php echo $event['location_latitude']; ?>">
                 </td>
                 <td>
-                    <input type="text" name="longitude" value="<?php echo $event['location_longitude']; ?>">
+                    <input type="text" name="longitude" class="form-control" value="<?php echo $event['location_longitude']; ?>">
                 </td>
                 <td>
-                    <input type="text" name="locationName" value="<?php echo $event['location.name']; ?>">
+                    <input type="text" name="locationName" class="form-control" value="<?php echo $event['location.name']; ?>">
                 </td>
                 <td>
-                    <input type="text" name="day" value="<?php echo $event['time.day']; ?>">
+                    <input type="text" name="day" class="form-control" value="<?php echo $event['time.day']; ?>">
                 </td>
                 <td>
-                    <input type="text" name="epoch" value="<?php echo $event['time.epoch']; ?>">
+                    <input type="text" name="epoch" class="form-control" value="<?php echo $event['time.epoch']; ?>">
                 </td>
                 <td>
-                    <input type="text" name="fullTime" value="<?php echo $event['time.full']; ?>">
+                    <input type="text" name="fullTime" class="form-control" value="<?php echo $event['time.full']; ?>">
                 </td>
                 <td>
-                    <input type="text" name="hour" value="<?php echo $event['time.hour']; ?>">
+                    <input type="text" name="hour" class="form-control" value="<?php echo $event['time.hour']; ?>">
                 </td>
                 <td>
-                    <input type="text" name="minute" value="<?php echo $event['time.minute']; ?>">
+                    <input type="text" name="minute" class="form-control" value="<?php echo $event['time.minute']; ?>">
                 </td>
                 <td>
-                    <input type="text" name="month" value="<?php echo $event['time.month']; ?>">
+                    <input type="text" name="month" class="form-control" value="<?php echo $event['time.month']; ?>">
                 </td>
                 <td>
-                    <input type="text" name="second" value="<?php echo $event['time.second']; ?>">
+                    <input type="text" name="second" class="form-control" value="<?php echo $event['time.second']; ?>">
                 </td>
                 <td>
-                    <input type="text" name="year" value="<?php echo $event['time.year']; ?>">
+                    <input type="text" name="year" class="form-control" value="<?php echo $event['time.year']; ?>">
                 </td>
                 <td>
-                    <input type="submit" value="Update">
+                    <input type="submit" class="btn btn-success" value="Update">
                     </form>
                     <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                         <input type="hidden" name="eventId" value="<?php echo $event['id']; ?>">
                         <input type="hidden" name="action" value="delete">
-                        <input type="submit" value="Delete" onclick="return confirm('Are you sure you want to delete this event?')">
+                        <input type="submit" class="btn btn-danger" value="Delete" onclick="return confirm('Are you sure you want to delete this event?')">
                     </form>
                 </td>
             </tr>
         <?php endforeach; ?>
-    </table>
+    </tbody>
+</table>
+
 
     <h2>Create New Event</h2>
 

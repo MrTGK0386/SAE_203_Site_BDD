@@ -34,7 +34,7 @@
       <div class="button-name"><p>Gerer les utilisateurs</p></div>
     </div>
   </div>
-  <br><button onclick="location.href='../../index.php'">Retour</button>
+  <br><button class="btn btn-dark" onclick="location.href='../../index.php'">Retour</button>
 
 </body>
 </html>

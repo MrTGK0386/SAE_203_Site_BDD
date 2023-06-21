@@ -2,6 +2,8 @@
 <html>
 <head>
     <title>User Table</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </head>
 <body>
     <?php
@@ -111,8 +113,12 @@
     // Display the user table
     $users = getUsers($conn);
     ?>
+    
 
-    <table>
+<h1>Edit Users</h1>
+
+<table class="table">
+    <thead>
         <tr>
             <th>Username</th>
             <th>Password</th>
@@ -120,60 +126,103 @@
             <th>Admin</th>
             <th>Action</th>
         </tr>
+    </thead>
+    <tbody>
         <?php foreach ($users as $user): ?>
             <tr>
                 <td>
                     <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                         <input type="hidden" name="userId" value="<?php echo $user['id']; ?>">
                         <input type="hidden" name="action" value="update">
-                        <input type="text" name="username" value="<?php echo $user['username']; ?>">
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="username" value="<?php echo $user['username']; ?>">
+                        </div>
                 </td>
                 <td>
-                    <input type="hidden" name="password" value="<?php echo $user['password']; ?>">
-                    <input type="text" name="password" value="<?php echo $user['password']; ?>">
+                    <div class="input-group">
+                        <input type="hidden" name="password" value="<?php echo $user['password']; ?>">
+                        <input type="text" class="form-control" name="password" value="<?php echo $user['password']; ?>">
+                    </div>
                 </td>
                 <td>
-                    <input type="hidden" name="email" value="<?php echo $user['email']; ?>">
-                    <input type="text" name="email" value="<?php echo $user['email']; ?>">
+                    <div class="input-group">
+                        <input type="hidden" name="email" value="<?php echo $user['email']; ?>">
+                        <input type="text" class="form-control" name="email" value="<?php echo $user['email']; ?>">
+                    </div>
                 </td>
                 <td>
-                    <input type="checkbox" name="admin" value="1" <?php if ($user['admin'] == 1) echo 'checked'; ?>>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" name="admin" value="1" <?php if ($user['admin'] == 1) echo 'checked'; ?>>
+                        <label class="form-check-label">Admin</label>
+                    </div>
                 </td>
                 <td>
-                    <button type="submit">Update</button>
+                    <div class="btn-group" role="group">
+                        <button type="submit" class="btn btn-success">Mettre à jour</button>
+                    </div>
                     </form>
                     
                     <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                         <input type="hidden" name="userId" value="<?php echo $user['id']; ?>">
                         <input type="hidden" name="action" value="delete">
-                        <button type="submit" onclick="return confirm('Are you sure you want to delete this user?')">Delete</button>
+                        <div class="btn-group" role="group">
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this user?')">Supprimer</button>
+                        </div>
                     </form>
                 </td>
             </tr>
         <?php endforeach; ?>
+    </tbody>
+</table>
+
+<h1>Add user</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Username</th>
+            <th>Password</th>
+            <th>Email</th>
+            <th>Admin</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
         <tr>
             <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                 <td>
-                    <input type="text" name="username" placeholder="Username">
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="username" placeholder="Username">
+                    </div>
                 </td>
                 <td>
-                    <input type="text" name="password" placeholder="Password">
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="password" placeholder="Password">
+                    </div>
                 </td>
                 <td>
-                    <input type="text" name="email" placeholder="Email">
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="email" placeholder="Email">
+                    </div>
                 </td>
                 <td>
-                    <input type="checkbox" name="admin" value="1">
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" name="admin" value="1">
+                        <label class="form-check-label">Admin</label>
+                    </div>
                 </td>
                 <td>
                     <input type="hidden" name="action" value="create">
-                    <button type="submit">Create</button>
+                    <div class="btn-group" role="group">
+                        <button type="submit" class="btn btn-primary">Ajouter</button>
+                    </div>
                 </td>
             </form>
         </tr>
-    </table>
+    </tbody>
+</table>
 
-    <br><button onclick="location.href='configurationPanel.php'">Retour</button>
+
+    <br><button class="btn btn-dark" onclick="location.href='configurationPanel.php'">Retour</button>
 
 </body>
 </html>
