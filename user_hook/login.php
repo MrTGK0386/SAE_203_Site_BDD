@@ -24,10 +24,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $result = mysqli_query($conn, $sql);
 
     if (mysqli_num_rows($result) === 1) {
+        session_unset();
+        session_destroy();
         $row = mysqli_fetch_assoc($result);
         $_SESSION['username'] = $username;
         $_SESSION['admin'] = $row['admin']; // Store the admin state in the session
-        setcookie("_admin",$_SESSION['admin']);
         header("Location: connection.php");
         exit;
     } else {

@@ -1,16 +1,22 @@
-<header id="header-admin">
-    <div class="header-container">
-        <div class="logo">
-            <h1>Logo</h1>
+<header id="HAdmin" class="py-3 border-bottom">
+    <div class="container-fluid d-flex align-items-center justify-content-between">
+        <div class="d-flex align-items-center">
+            <iconify-icon icon="ion:logo-css3" alt="Logo" class="rounded-circle" width="32" height="32" ></iconify-icon>
         </div>
-        <div class="search-bar">
-            <input type="text" placeholder="Chercher une catastrophe">
-            <button type="submit"><i class="fas fa-search"></i></button>
+        <div>
+            <a href="#" class="d-block link-body-emphasis text-decoration-none" data-bs-toggle="dropdown" aria-expanded="false">Filtrer les catastrophe</a>
         </div>
-        <nav>
-            <ul>
-                <li><a href="#" class="account-icon"><i class="fas fa-user"></i></a></li>
-            </ul>
-        </nav>
+        <div class="d-flex align-items-center">
+            <div class="flex-shrink-0 dropdown">
+                <a href="#" class="d-block link-body-emphasis text-decoration-none" data-bs-toggle="dropdown" aria-expanded="false">
+                    <iconify-icon icon="mdi:account" alt="account" class="rounded-circle" width="32" height="32"></iconify-icon>
+                </a>
+                <ul class="dropdown-menu text-small shadow">
+                    <li><a class="dropdown-item" href="user_hook/logout.php">Logout</a></li>
+                </ul>
+            </div>
+        </div>
     </div>
 </header>
+
+

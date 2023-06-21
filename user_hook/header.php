@@ -14,6 +14,11 @@ function checkAdmin(){
     }
 }
 
+
+
+
 checkAdmin();
 
 ?>
+<script> var session = <?php echo $_SESSION['admin']; ?>; alert(session);</script>
+

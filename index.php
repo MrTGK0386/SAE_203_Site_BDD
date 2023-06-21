@@ -8,7 +8,7 @@
     <title>La page de fou - Page d'accueil</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
           rel="stylesheet">
-    <link href="HTML_elements/headers/style/style.css"
+    <link href="style.css"
           rel="stylesheet">
     <link href="https://cesium.com/downloads/cesiumjs/releases/1.106/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
     <?php
@@ -16,12 +16,14 @@
     include_once 'sql_usage/createTables.php'
     ?>
 </head>
+
 <body class="d-flex flex-column min-vh-100">
 
-<div id="header" class="container dynamic">
-    <?php  include_once "user_hook/header.php"; ?>
+<div id="header">
+    <?php  include "user_hook/header.php"; ?>
     <!-- inclusion des variables et fonctions -->
 </div>
+
 <div id="cesiumContainer">
     <script src="https://cesium.com/downloads/cesiumjs/releases/1.84/Build/Cesium/Cesium.js"></script>
     <script>
@@ -69,17 +71,19 @@
     }
     ?>
 </div>
+
 <div>
-    <div>
-        <p type="button" name="trigger" value="DROP TABLE"/>
-    </div>
+    <p type="button" name="trigger" value="DROP TABLE"/>
+</div>
+
+<div>
     <div>
         <form action="index.php" method="post">
             Nom de la table : <input type="text" name="nomTable">
             <input type="submit" name="afficher">
-        </form>
-        <br><button onclick="location.href='user_hook/connection.php'">Login</button>
+        </form><br>
     </div>
+
     <?php
     function nbEnregistrement($nomTable, $conn) {
         $requete = "SELECT * FROM SAE203_$nomTable";
@@ -101,14 +105,14 @@
         nbEnregistrement($nomTable, $conn);
     }
     ?>
+
 </div>
 
-
-
 <!-- inclusion du bas de page du site -->
-<?php //include_once('footer.php'); ?>
-
+<?php include_once('HTML_elements/footer.php'); ?>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 <script>viewer.zoomTo(viewer.entities);</script>
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 <script src="Scripts/main.js"></script>
 </body>
 </html>
