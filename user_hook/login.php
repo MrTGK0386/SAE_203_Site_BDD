@@ -12,8 +12,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-
-
     if (!$conn) {
         die("La connexion a échoué : " . mysqli_connect_error());
     }
@@ -21,11 +19,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = mysqli_real_escape_string($conn, $username);
     $password = mysqli_real_escape_string($conn, $password);
 
-    $sql = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
+    $sql = "SELECT * FROM sae203_users WHERE username = '$username' AND password = '$password'";
     $result = mysqli_query($conn, $sql);
 
     if (mysqli_num_rows($result) === 1) {
+        $row = mysqli_fetch_assoc($result);
         $_SESSION['username'] = $username;
+        $_SESSION['admin'] = $row['admin']; // Store the admin state in the session
         header("Location: connection.php");
         exit;
     } else {

@@ -20,13 +20,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = mysqli_real_escape_string($conn, $username);
     $password = mysqli_real_escape_string($conn, $password);
 
-    $checkQuery = "SELECT * FROM users WHERE username = '$username'";
+    $checkQuery = "SELECT * FROM sae203_users WHERE username = '$username'";
     $checkResult = mysqli_query($conn, $checkQuery);
 
     if (mysqli_num_rows($checkResult) > 0) {
         $error = "Username already exists";
     } else {
-        $insertQuery = "INSERT INTO users (username, password, email, admin) VALUES ('$username', '$password', '$email', 0)";
+        $insertQuery = "INSERT INTO sae203_users (username, password, email, admin) VALUES ('$username', '$password', '$email', 0)";
         if (mysqli_query($conn, $insertQuery)) {
             $_SESSION['username'] = $username;
             header("Location: connection.php");

@@ -1,4 +1,4 @@
-$sql = "CREATE TABLE $tableName(
+$sql = "CREATE TABLE sae203_volcano(
    `id`                       INT PRIMARY KEY AUTO_INCREMENT
   ,`volcano_name`             VARCHAR(34) NOT NULL
   ,`primary_volcano_type`     VARCHAR(19) NOT NULL

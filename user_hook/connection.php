@@ -27,7 +27,13 @@ session_start();
     <?php
 
     if (isset($_SESSION['username'])) {
+        if ($_SESSION['admin'] == 1){
+        echo 'Welcome, ' . $_SESSION['username'] . ' admin User!';
+        }
+        else{
         echo 'Welcome, ' . $_SESSION['username'] . '!';
+
+        }
         echo '<br><button onclick="location.href=\'logout.php\'">Logout</button>';
     } else {
         echo '<button onclick="location.href=\'login.php\'">Login</button> or <button onclick="location.href=\'register.php\'">Register</button>';
