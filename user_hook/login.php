@@ -12,6 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
+
     if (!$conn) {
         die("La connexion a échoué : " . mysqli_connect_error());
     }
@@ -26,6 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $row = mysqli_fetch_assoc($result);
         $_SESSION['username'] = $username;
         $_SESSION['admin'] = $row['admin']; // Store the admin state in the session
+        setcookie("_admin",$_SESSION['admin']);
         header("Location: connection.php");
         exit;
     } else {
@@ -42,6 +44,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Login</title>
 </head>
 <body>
+<header>
+    <?php  include_once "header.php"; ?>
+</header>
     <h2>Login</h2>
     <?php
     if (isset($error)) {

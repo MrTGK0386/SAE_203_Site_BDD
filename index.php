@@ -12,13 +12,14 @@
           rel="stylesheet">
     <link href="https://cesium.com/downloads/cesiumjs/releases/1.106/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
     <?php
+    session_start();
     include_once 'sql_usage/createTables.php'
     ?>
 </head>
 <body class="d-flex flex-column min-vh-100">
 
 <div id="header" class="container dynamic">
-    <?php  //include_once('HTML_elements/headers/headerRandom.html'); ?>
+    <?php  include_once "user_hook/header.php"; ?>
     <!-- inclusion des variables et fonctions -->
 </div>
 <div id="cesiumContainer">
@@ -66,7 +67,6 @@
 
         }
     }
-
     ?>
 </div>
 <div>

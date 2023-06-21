@@ -6,10 +6,11 @@ session_start();
 <html>
 <head>
     <title>Login and Registration System</title>
+    <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
     <header>
-        <link rel="stylesheet" href="styles/style.css">
+        <?php  include_once "header.php"; ?>
         <h1>placeholder</h1>
         <?php
         if (isset($_SESSION['username'])) {

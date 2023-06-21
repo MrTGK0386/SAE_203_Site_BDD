@@ -46,6 +46,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Register</title>
 </head>
 <body>
+<header>
+    <?php  include_once "header.php"; ?>
+</header>
     <h2>Register</h2>
     <?php
     if (isset($error)) {
