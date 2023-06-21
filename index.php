@@ -34,14 +34,13 @@
         });
 
         // Function to add a point at a given latitude and longitude
-        function addPoint(latitude, longitude, type, size) {
-
+        function addPoint(latitude, longitude, size, color) {
+            
             viewer.entities.add({
                 position: Cesium.Cartesian3.fromDegrees(longitude, latitude),
-                billboard: {
-                    image: type,
-                    scale: size,
-                    // color: Cesium.Color.RED
+                point: {
+                    pixelSize: size, // Adjust the point size as desired
+                    color: color // Set the desired point color
                 }
             });
 
@@ -58,11 +57,11 @@
     }
     while ($row = mysqli_fetch_assoc($resultat)) {
         if ($row['impact_magnitude'] >1){
-            echo"<script>addPoint($row[location_latitude], $row[location_longitude], 'assets/ico.png', 0.05);</script>";
+            echo"<script>addPoint($row[location_latitude], $row[location_longitude],  10, Cesium.Color.RED);</script>";
         }
 
         else{
-            echo"<script>addPoint($row[location_latitude], $row[location_longitude], 'assets/ico2.png', 0.02);</script>";
+            echo"<script>addPoint($row[location_latitude], $row[location_longitude],  15, Cesium.Color.GREEN);</script>";
 
         }
     }
