@@ -11,6 +11,5 @@ if (isset($_SESSION['username'])) {
     include_once "HTML_elements/headers/headerRandom.html";
 
 }
-
 ?>
 
