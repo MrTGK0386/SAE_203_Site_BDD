@@ -7,9 +7,10 @@ if (isset($_SESSION['username'])) {
         include_once "HTML_elements/headers/headerUser.html";
 
     }
+}else{
     include_once "HTML_elements/headers/headerRandom.html";
+
 }
 
 ?>
-<script> var session = <?php echo $_SESSION['admin']; ?>; alert(session);</script>
 

@@ -1,7 +1,7 @@
 <?php
 include_once '../sql_usage/SQLConnection.php';
 
-session_start();
+
 
 if (isset($_SESSION['username'])) {
     header("Location: index.php");
@@ -11,6 +11,10 @@ if (isset($_SESSION['username'])) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
+
+    session_unset();
+    session_destroy();
+    session_start();
 
 
     if (!$conn) {
@@ -24,12 +28,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $result = mysqli_query($conn, $sql);
 
     if (mysqli_num_rows($result) === 1) {
-        session_unset();
-        session_destroy();
         $row = mysqli_fetch_assoc($result);
         $_SESSION['username'] = $username;
         $_SESSION['admin'] = $row['admin']; // Store the admin state in the session
-        header("Location: connection.php");
+        header("Location: ../index.php");
         exit;
     } else {
         $error = "Invalid username or password";
