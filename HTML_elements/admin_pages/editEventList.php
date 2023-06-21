@@ -22,17 +22,17 @@
       <div class="button-name"><p>Tremblements de Terre</p></div>
     </div>
 
-    <div class="button volcano" onclick="location.href='#'">
+    <div class="button volcano" onclick="alert('Cette partie du site est en construction.\nVeuillez nous excuser pour la gêne occasionnée.')">
       <img class="button-icon" src="assets/volcan.png" alt="Button 1 Icon">
       <div class="button-name"><p>Volcans</p></div>
     </div>
 
-    <div class="button meteor" onclick="location.href='#'">
+    <div class="button meteor" onclick="alert('Cette partie du site est en construction.\nVeuillez nous excuser pour la gêne occasionnée.')">
       <img class="button-icon" src="assets/meteorite.png" alt="Button 1 Icon">
       <div class="button-name"><p>Météorites</p></div>
     </div>
 
-    <div class="button country" onclick="location.href='#'">
+    <div class="button country" onclick="alert('Cette partie du site est en construction.\nVeuillez nous excuser pour la gêne occasionnée.')">
       <img class="button-icon" src="assets/planete.png" alt="Button 1 Icon">
       <div class="button-name"><p>Pays</p></div>
     </div>
