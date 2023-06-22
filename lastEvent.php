@@ -29,119 +29,103 @@
 
     include_once 'user_hook/header.php'; ?>
 
-    <div class="container d-flex justify-content-between align-items-center">
-        <div>
-            <div class="d-flex flex-nowrap justify-content-between">
-                <?php foreach ($events_eq as $index => $event) : ?>
-                    <div class="">
-                        <div class="">
-                            <div class="">
-                                <div class="card" style="width: 18rem;">
-                                    <div>
-                                        <div id="map-<?php echo $index; ?>"></div>
-                                    </div>
+    <div class="m-auto w-75 d-flex justify-content-between align-items-center">
+        <div class="d-flex flex-nowrap justify-content-between">
+            <?php foreach ($events_eq as $index => $event) : ?>
+                <div class="card">
+                    <div>
+                        <div id="map-<?php echo $index; ?>" class="cesium-container"></div>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Tremblement de Terre en <?php echo $event['location.name']; ?>.</h5>
+                        <p class="card-text">Ce tremblement de terre a eu lieu en : <?php echo $event['time.full']; ?></p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Magnitude : <?php echo $event['impact_magnitude']; ?></li>
+                        <li class="list-group-item">Profondeur : <?php echo $event['location.depth']; ?></li>
+                        <li class="list-group-item">Localisation précise :<br><?php echo $event['location.full']; ?></li>
+                        <li class="list-group-item">Latitude : <?php echo $event['location_latitude']; ?></li>
+                        <li class="list-group-item">Longitude : <?php echo $event['location_longitude']; ?></li>
 
-                                    <div class="card-body">
-                                        <h5 class="card-title">Tremblement de Terre en <?php echo $event['location.name']; ?>.</h5>
-                                        <p class="card-text">Ce tremblement de terre a eu lieu en : <?php echo $event['time.full']; ?></p>
-                                    </div>
-                                    <ul class="list-group list-group-flush">
-                                        <li class="list-group-item">Magnitude : <?php echo $event['impact_magnitude']; ?></li>
-                                        <li class="list-group-item">Profondeur : <?php echo $event['location.depth']; ?></li>
-                                        <li class="list-group-item">Localisation précise :<br><?php echo $event['location.full']; ?></li>
-                                        <li class="list-group-item">Latitude : <?php echo $event['location_latitude']; ?></li>
-                                        <li class="list-group-item">Longitude : <?php echo $event['location_longitude']; ?></li>
+                    </ul>
+                    <div class="card-body">
+                        <a class="card-link" href="https://www.openstreetmap.org/#map=13/<?php echo $event['location_latitude']; ?>/<?php echo $event['location_longitude']; ?>" target="_blank">Ouvrir dans open street map</a>
+                    </div>
+                </div>
+                <script>
+                        var map<?php echo $index; ?> = new Cesium.Viewer('map-<?php echo $index; ?>', {
+                            shouldAnimate: true,
+                            animation: false,
+                            timeline: false,
+                            baseLayerPicker: false,
+                            imageryProvider: new Cesium.ArcGisMapServerImageryProvider({
+                                url: 'https://services.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer',
+                            }),
+                        });
 
-                                    </ul>
-                                    <div class="card-body">
-                                        <a href="https://www.openstreetmap.org/#map=13/<?php echo $event['location_latitude']; ?>/<?php echo $event['location_longitude']; ?>" target="_blank" class="card-link">Ouvrir dans open street map</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <script>
-                            var map<?php echo $index; ?> = new Cesium.Viewer('map-<?php echo $index; ?>', {
-                                shouldAnimate: true,
-                                animation: false,
-                                timeline: false,
-                                baseLayerPicker: false,
-                                imageryProvider: new Cesium.ArcGisMapServerImageryProvider({
-                                    url: 'https://services.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer',
-                                }),
+                        addPoint<?php echo $index; ?>(<?php echo $event['location_latitude']; ?>, <?php echo $event['location_longitude']; ?>, 10, Cesium.Color.RED);
+
+                        function addPoint<?php echo $index; ?>(latitude, longitude, size, color) {
+                            var viewer = map<?php echo $index; ?>;
+                            var entity = viewer.entities.add({
+                                position: Cesium.Cartesian3.fromDegrees(longitude, latitude),
+                                point: {
+                                    pixelSize: size,
+                                    color: color
+                                }
                             });
 
-                            addPoint<?php echo $index; ?>(<?php echo $event['location_latitude']; ?>, <?php echo $event['location_longitude']; ?>, 10, Cesium.Color.RED);
-
-                            function addPoint<?php echo $index; ?>(latitude, longitude, size, color) {
-                                var viewer = map<?php echo $index; ?>;
-                                var entity = viewer.entities.add({
-                                    position: Cesium.Cartesian3.fromDegrees(longitude, latitude),
-                                    point: {
-                                        pixelSize: size,
-                                        color: color
-                                    }
-                                });
-
-                                // Fly to the entity's position
-                                viewer.camera.flyTo({
-                                    destination: Cesium.Cartesian3.fromDegrees(longitude, latitude, 100000), // Adjust the third parameter (height) to change the zoom level
-                                    duration: 8 // Animation duration in seconds
-                                });
-                            }
-                        </script>
-                    </div>
-                <?php endforeach; ?>
-            </div>
+                            // Fly to the entity's position
+                            viewer.camera.flyTo({
+                                destination: Cesium.Cartesian3.fromDegrees(longitude, latitude, 100000), // Adjust the third parameter (height) to change the zoom level
+                                duration: 8 // Animation duration in seconds
+                            });
+                        }
+                    </script>
+            <?php endforeach; ?>
         </div>
     </div>
 
-
-    <div class="container d-flex justify-content-between align-items-center">
+    <div class="m-auto w-75 d-flex justify-content-between align-items-center">
         <?php foreach ($events_meteor as $index => $event) : ?>
-            <div class="">
-                <div class="">
-                    <div class="">
-                        <div class="card" style="width: 18rem;">
-                            <div>
-                                <div id="map-meteor-<?php echo $index; ?>" class="cesium-container"></div>
-                            </div>
+            <div class="card mx-3">
+                <div>
+                    <div id="map-meteor-<?php echo $index; ?>" class="cesium-container"></div>
+                </div>
 
-                            <div class="card-body">
-                                <h5 class="card-title">Météorite nommée : <br><?php echo $event['name']; ?>.</h5>
-                                <p class="card-text">Cette météorite est tombée en : <?php echo $event['year']; ?></p>
-                            </div>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">Masse : <?php echo $event['mass_(g)']; ?></li>
-                                <li class="list-group-item">Latitude : <?php
-                                                                        $geolocation = $event['GeoLocation'];
+                <div class="card-body">
+                    <h5 class="card-title">Météorite nommée : <br><?php echo $event['name']; ?>.</h5>
+                    <p class="card-text">Cette météorite est tombée en : <?php echo $event['year']; ?></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Masse : <?php echo $event['mass_(g)']; ?></li>
+                    <li class="list-group-item">Latitude : <?php
+                                                            $geolocation = $event['GeoLocation'];
 
-                                                                        $cleanString = str_replace(array('(', ')', ' '), '', $geolocation);
+                                                            $cleanString = str_replace(array('(', ')', ' '), '', $geolocation);
 
-                                                                        // Explode the string using the comma as the delimiter
-                                                                        $values = explode(',', $cleanString);
+                                                            // Explode the string using the comma as the delimiter
+                                                            $values = explode(',', $cleanString);
 
-                                                                        // Retrieve the first and second values
-                                                                        $geofirstValue = $values[0];
-                                                                        echo $geofirstValue ?>
-                                </li>
-                                <li class="list-group-item">Longitude : <?php $geolocation = $event['GeoLocation'];
+                                                            // Retrieve the first and second values
+                                                            $geofirstValue = $values[0];
+                                                            echo $geofirstValue ?>
+                    </li>
+                    <li class="list-group-item">Longitude : <?php $geolocation = $event['GeoLocation'];
 
-                                                                        $cleanString = str_replace(array('(', ')', ' '), '', $geolocation);
+                                                            $cleanString = str_replace(array('(', ')', ' '), '', $geolocation);
 
-                                                                        // Explode the string using the comma as the delimiter
-                                                                        $values = explode(',', $cleanString);
+                                                            // Explode the string using the comma as the delimiter
+                                                            $values = explode(',', $cleanString);
 
-                                                                        // Retrieve the first and second values
-                                                                        $geosecondValue = $values[1];
-                                                                        echo $geosecondValue ?>
-                                </li>
+                                                            // Retrieve the first and second values
+                                                            $geosecondValue = $values[1];
+                                                            echo $geosecondValue ?>
+                    </li>
 
-                            </ul>
-                            <div class="card-body">
-                                <a href="https://www.openstreetmap.org/#map=13/<?php echo $geofirstValue; ?>/<?php echo $geosecondValue; ?>" target="_blank" class="card-link">Ouvrir dans open street map</a>
-                            </div>
-                        </div>
-                    </div>
+                </ul>
+                <div class="card-body">
+                    <a href="https://www.openstreetmap.org/#map=13/<?php echo $geofirstValue; ?>/<?php echo $geosecondValue; ?>" target="_blank" class="card-link">Ouvrir dans open street map</a>
                 </div>
             </div>
             <script>
@@ -177,74 +161,66 @@
         <?php endforeach; ?>
     </div>
 
-
-
-
-
-    <div class="container d-flex justify-content-between align-items-center">
+    <div class="m-auto w-75 d-flex justify-content-between align-items-center">
         <?php foreach ($events_volcano as $index => $event) : ?>
-            <div class="">
-                <div class="">
-                    <div class="">
-                        <div class="card" style="width: 18rem;">
-                            <div>
-                                <div id="map-volcano-<?php echo $index; ?>" class="cesium-container"></div>
-                            </div>
-
-                            <div class="card-body">
-                                <h5 class="card-title">Volcan nommée : <br><?php echo $event['volcano_name']; ?>.</h5>
-                                <p class="card-text">La dernière éruption de ce volcan remonte en : <?php echo $event['last_eruption_year']; ?></p>
-                            </div>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">Pays : <?php echo $event['country']; ?></li>
-                                <li class="list-group-item">Latitude : <?php echo $event['latitude']; ?></li>
-                                <li class="list-group-item">Longitude : <?php echo $event['longitude']; ?></li>
-
-                            </ul>
-                            <div class="card-body">
-                                <a href="https://www.openstreetmap.org/#map=13/<?php echo $event['latitude']; ?>/<?php echo $event['longitude']; ?>" target="_blank" class="card-link">Ouvrir dans open street map</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <div class="card">
+            <div>
+                <div id="map-volcano-<?php echo $index; ?>" class="cesium-container"></div>
             </div>
-    <script>
-        var volcanoMap<?php echo $index; ?> = new Cesium.Viewer('map-volcano-<?php echo $index; ?>', {
-            shouldAnimate: true,
-            animation: false,
-            timeline: false,
-            baseLayerPicker: false,
-            imageryProvider: new Cesium.ArcGisMapServerImageryProvider({
-                url: 'https://services.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer',
-            }),
-        });
 
-        addVolcanoPoint<?php echo $index; ?>(<?php echo $event['latitude']; ?>, <?php echo $event['longitude']; ?>, 10, Cesium.Color.ORANGE);
+            <div class="card-body">
+                <h5 class="card-title">Volcan nommée : <br><?php echo $event['volcano_name']; ?>.</h5>
+                <p class="card-text">La dernière éruption de ce volcan remonte en : <?php echo $event['last_eruption_year']; ?></p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Pays : <?php echo $event['country']; ?></li>
+                <li class="list-group-item">Latitude : <?php echo $event['latitude']; ?></li>
+                <li class="list-group-item">Longitude : <?php echo $event['longitude']; ?></li>
 
-        function addVolcanoPoint<?php echo $index; ?>(latitude, longitude, size, color) {
-            var viewer = volcanoMap<?php echo $index; ?>;
-
-            var entity = viewer.entities.add({
-                position: Cesium.Cartesian3.fromDegrees(longitude, latitude),
-                point: {
-                    pixelSize: size,
-                    color: color
-                }
+            </ul>
+            <div class="card-body">
+                <a href="https://www.openstreetmap.org/#map=13/<?php echo $event['latitude']; ?>/<?php echo $event['longitude']; ?>" target="_blank" class="card-link">Ouvrir dans open street map</a>
+            </div>
+        </div>
+        <script>
+            var volcanoMap<?php echo $index; ?> = new Cesium.Viewer('map-volcano-<?php echo $index; ?>', {
+                shouldAnimate: true,
+                animation: false,
+                timeline: false,
+                baseLayerPicker: false,
+                imageryProvider: new Cesium.ArcGisMapServerImageryProvider({
+                    url: 'https://services.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer',
+                }),
             });
 
-            viewer.camera.flyTo({
-                destination: Cesium.Cartesian3.fromDegrees(longitude, latitude, 100000), // Adjust the third parameter (height) to change the zoom level
-                duration: 8 // Animation duration in seconds
-            });
-        }
-    </script>
-<?php endforeach; ?>
-</div>
+            addVolcanoPoint<?php echo $index; ?>(<?php echo $event['latitude']; ?>, <?php echo $event['longitude']; ?>, 10, Cesium.Color.ORANGE);
 
-<button class="btn btn-dark" onclick="location.href='index.php'">Retour</button>
-</div>
-<?php include_once 'HTML_elements/footer.php';
-include_once "HTML_elements/ligthSwitch.php"; ?>
+            function addVolcanoPoint<?php echo $index; ?>(latitude, longitude, size, color) {
+                var viewer = volcanoMap<?php echo $index; ?>;
+
+                var entity = viewer.entities.add({
+                    position: Cesium.Cartesian3.fromDegrees(longitude, latitude),
+                    point: {
+                        pixelSize: size,
+                        color: color
+                    }
+                });
+
+                viewer.camera.flyTo({
+                    destination: Cesium.Cartesian3.fromDegrees(longitude, latitude, 100000), // Adjust the third parameter (height) to change the zoom level
+                    duration: 8 // Animation duration in seconds
+                });
+            }
+        </script>
+    <?php endforeach; ?>
+
+    </div>
+    <div class="d-flex justify-content-center">
+        <button class="btn btn-dark" onclick="location.href='index.php'">Retour</button>
+    </div>
+
+    <?php include_once 'HTML_elements/footer.php';
+    include_once "HTML_elements/ligthSwitch.php"; ?>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
