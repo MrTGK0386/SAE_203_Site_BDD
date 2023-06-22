@@ -184,6 +184,7 @@
                 <a href="https://www.openstreetmap.org/#map=13/<?php echo $event['latitude']; ?>/<?php echo $event['longitude']; ?>" target="_blank" class="card-link">Ouvrir dans open street map</a>
             </div>
         </div>
+        </a>
         <script>
             var volcanoMap<?php echo $index; ?> = new Cesium.Viewer('map-volcano-<?php echo $index; ?>', {
                 shouldAnimate: true,
