@@ -6,20 +6,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>La page de fou - Page d'accueil</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link href="style.css" rel="stylesheet">
     <link href="https://cesium.com/downloads/cesiumjs/releases/1.106/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
     <?php
     session_start();
     include_once 'sql_usage/createTables.php';
     ?>
+    <!-- création des tables si elle n'existe pas et gestion de la $conn -->
 </head>
 
 <body class="d-flex flex-column min-vh-100">
 
 <div id="header">
     <?php  include "user_hook/header.php"; ?>
-    <!-- inclusion des variables et fonctions -->
+    <!-- inclusion du header -->
 </div>
 
 <div id="cesiumContainer">
@@ -68,10 +69,6 @@
         }
     }
     ?>
-</div>
-
-<div>
-    <p type="button" name="trigger" value="DROP TABLE">Drop table</p>
 </div>
 
 <div>
