@@ -241,18 +241,6 @@
 <?php endforeach; ?>
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
 <button class="btn btn-dark" onclick="location.href='index.php'">Retour</button>
 </div>
 <?php include_once 'HTML_elements/footer.php';

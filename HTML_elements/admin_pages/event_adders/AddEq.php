@@ -4,7 +4,7 @@
     <title>Edit Event Page</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
     <?php
     include_once '../../../sql_usage/SQLConnection.php';
     
@@ -91,86 +91,93 @@
     // Display the earthquake table
     $events = getEvents($conn);
     ?>
+    <div class="m-auto">
+        <h2>Create New Event</h2>
 
 
-    <h2>Create New Event</h2>
+        <form class="form d-flex flex-column" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+            <input type="hidden" name="action" value="create">
+            <div class="d-flex">
+                <div class="w-50 p-3">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Taille de l'impact</span>
+                        <input type="text" class="form-control" placeholder="Taille" name="gap">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Magnitude</span>
+                        <input class="form-control" placeholder="Magnitude" type="text" name="magnitude">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Importance</span>
+                        <input class="form-control" placeholder="Importance" type="text" name="significance">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Profondeur</span>
+                        <input class="form-control" placeholder="Profondeur" type="text" name="depth">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Distance</span>
+                        <input class="form-control" placeholder="Distance" type="text" name="distance">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Lieu</span>
+                        <input class="form-control" placeholder="Lieu" type="text" name="fullLocation">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Latitude</span>
+                        <input class="form-control" placeholder="Latitude" type="text" name="latitude">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Longitude</span>
+                        <input class="form-control" placeholder="Longitude" type="text" name="longitude">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Nom du lieu</span>
+                        <input class="form-control" placeholder="Nom du lieu" type="text" name="locationName">
+                    </div>
+                </div>
+                <div class="w-50 p-3">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Jour</span>
+                        <input class="form-control" placeholder="Jour" type="text" name="day">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Epoque</span>
+                        <input class="form-control" placeholder="Epoque" type="text" name="epoch">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Temp complet</span>
+                        <input class="form-control" placeholder="Temp complet" type="text" name="fullTime">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Heure</span>
+                        <input class="form-control" placeholder="Heure" type="text" name="hour">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Minute</span>
+                        <input class="form-control" placeholder="Minute" type="text" name="minute">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Mois</span>
+                        <input class="form-control" placeholder="Mois" type="text" name="month">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Secondes</span>
+                        <input class="form-control" placeholder="Secondes" type="text" name="second">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Année</span>
+                        <input class="form-control" placeholder="Année" type="text" name="year">
+                    </div>
+                </div>
+            </div>
+            <div class="m-auto">
+                <input class="btn btn-primary" type="submit" value="Create">
+            </div>
+        </form>
+        <button class="btn btn-primary m-auto" onclick="location.href='../addEventList.php'">Ajouter d'autres événements.</button>
+    </div>
 
-
-    <form class="form" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-    <input type="hidden" name="action" value="create">
-    <div class="form-group">
-        <label>Gap:</label>
-        <input class="form-control form-control-sm" type="text" name="gap">
-    </div>
-    <div class="form-group">
-        <label>Magnitude:</label>
-        <input class="form-control form-control-sm" type="text" name="magnitude">
-    </div>
-    <div class="form-group">
-        <label>Significance:</label>
-        <input class="form-control form-control-sm" type="text" name="significance">
-    </div>
-    <div class="form-group">
-        <label>Depth:</label>
-        <input class="form-control form-control-sm" type="text" name="depth">
-    </div>
-    <div class="form-group">
-        <label>Distance:</label>
-        <input class="form-control form-control-sm" type="text" name="distance">
-    </div>
-    <div class="form-group">
-        <label>Full Location:</label>
-        <input class="form-control form-control-sm" type="text" name="fullLocation">
-    </div>
-    <div class="form-group">
-        <label>Latitude:</label>
-        <input class="form-control form-control-sm" type="text" name="latitude">
-    </div>
-    <div class="form-group">
-        <label>Longitude:</label>
-        <input class="form-control form-control-sm" type="text" name="longitude">
-    </div>
-    <div class="form-group">
-        <label>Location Name:</label>
-        <input class="form-control form-control-sm" type="text" name="locationName">
-    </div>
-    <div class="form-group">
-        <label>Day:</label>
-        <input class="form-control form-control-sm" type="text" name="day">
-    </div>
-    <div class="form-group">
-        <label>Epoch:</label>
-        <input class="form-control form-control-sm" type="text" name="epoch">
-    </div>
-    <div class="form-group">
-        <label>Full Time:</label>
-        <input class="form-control form-control-sm" type="text" name="fullTime">
-    </div>
-    <div class="form-group">
-        <label>Hour:</label>
-        <input class="form-control form-control-sm" type="text" name="hour">
-    </div>
-    <div class="form-group">
-        <label>Minute:</label>
-        <input class="form-control form-control-sm" type="text" name="minute">
-    </div>
-    <div class="form-group">
-        <label>Month:</label>
-        <input class="form-control form-control-sm" type="text" name="month">
-    </div>
-    <div class="form-group">
-        <label>Second:</label>
-        <input class="form-control form-control-sm" type="text" name="second">
-    </div>
-    <div class="form-group">
-        <label>Year:</label>
-        <input class="form-control form-control-sm" type="text" name="year">
-    </div>
-    <input class="btn btn-primary" type="submit" value="Create">
-</form>
-
-
-    <br><button onclick="location.href='../addEventList.php'">Ajouter d'autres événements.</button>
 
 </body>
 </html>
