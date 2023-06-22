@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html data-bs-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>La page de fou - Page de connexion</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link href="../style.css" rel="stylesheet">
     <link href="https://cesium.com/downloads/cesiumjs/releases/1.106/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
     <?php
@@ -55,7 +55,7 @@
 <body class="d-flex flex-column min-vh-100 container">
 <div class="form-signin m-auto">
     <form method="post" action="">
-        <img class="mb-4" src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
+        <iconify-icon icon="ion:logo-css3" alt="Logo" class="rounded-circle" width="32" height="32" ></iconify-icon>
         <h1 class="h3 mb-3 fw-normal">Connectez-vous s'il vous plaît</h1>
         <?php
         if (isset($error)) {
@@ -77,6 +77,7 @@
         <p class="mt-5 mb-3 text-body-secondary w-100 text-center">© 2023 Rocket Planet</p>
     </form>
 </div>
-
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+<script src="../Scripts/main.js"></script>
 </body>
+</html>
