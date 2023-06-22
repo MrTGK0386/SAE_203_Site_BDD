@@ -29,12 +29,14 @@
 
     include_once 'user_hook/header.php'; ?>
 
+    <div class="m-5">
+
     <div class="m-auto w-75 d-flex justify-content-between align-items-center">
         <div class="d-flex flex-nowrap justify-content-between">
             <?php foreach ($events_eq as $index => $event) : ?>
-                <div class="card mx-2">
+                <div class="card border-secondary mx-2">
                     <div>
-                        <div id="map-<?php echo $index; ?>" class="cesium-container"></div>
+                        <div id="map-<?php echo $index; ?>" class="cesium-container card-img-top"></div>
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">Tremblement de Terre en <?php echo $event['location.name']; ?>.</h5>
@@ -219,6 +221,9 @@
     <div class="d-flex justify-content-center">
         <button class="btn btn-dark" onclick="location.href='index.php'">Retour</button>
     </div>
+
+    </div>
+
 
     <?php include_once 'HTML_elements/footer.php';
     include_once "HTML_elements/ligthSwitch.php"; ?>
