@@ -56,7 +56,7 @@
 <div class="form-signin m-auto">
     <form method="post" action="">
         <iconify-icon icon="ion:logo-css3" alt="Logo" class="rounded-circle" width="32" height="32" ></iconify-icon>
-        <h1 class="h3 mb-3 fw-normal">Veuillez vous inscrire</h1>
+        <h1 class="h3 mb-3 fw-normal">S'inscrire pour acceder au reste site</h1>
         <?php
         if (isset($error)) {
             echo '<div class="mt-5 mb-3 text-danger">' . $error . '</div>';
@@ -79,10 +79,12 @@
         <button class="btn btn-primary w-100 py-2 mb-3" type="submit">S'inscrire</button>
     </form>
     <button class="btn btn-secondary w-100 py-2" onclick="location.href='LogPage.php'">Se connecter</button>
-    <p class="mt-5 mb-3 text-body-secondary w-100 text-center">© 2023 Rocket Planet</p>
+    <button class="btn btn-dark w-100 py-2 mt-5" onclick="location.href='../index.php'">Retour</button>
+
 
 
 </div>
+
 
 <?php include_once "../HTML_elements/footer.php"; include_once "../HTML_elements/ligthSwitch.php"?>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
