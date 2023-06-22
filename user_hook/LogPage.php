@@ -75,7 +75,7 @@
         <button class="btn btn-primary w-100 py-2 mb-3" type="submit">Se connecter</button>
     </form>
     <button class="btn btn-secondary w-100 py-2" onclick="location.href='register.php'">Créer un compte</button>
-    <button class="btn btn-dark w-100 py-2 mt-5" onclick="location.href='../index.php'">Retour</button>
+    <button class="btn btn-link w-100 py-2 mt-5" onclick="location.href='../index.php'">Retour</button>
 
 </div>
 
