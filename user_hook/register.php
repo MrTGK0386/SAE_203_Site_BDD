@@ -38,6 +38,8 @@
             $insertQuery = "INSERT INTO sae203_users (username, password, email, admin) VALUES ('$username', '$password', '$email', 0)";
             if (mysqli_query($conn, $insertQuery)) {
                 $_SESSION['username'] = $username;
+                $_SESSION['admin'] = 0;
+
                 header("Location: ../index.php");
                 exit;
             } else {
