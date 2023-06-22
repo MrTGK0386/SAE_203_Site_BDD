@@ -77,7 +77,9 @@
         <p class="mt-5 mb-3 text-body-secondary w-100 text-center">© 2023 Rocket Planet</p>
     </form>
 </div>
+<?php include_once "../HTML_elements/footer.php"; include_once "../HTML_elements/ligthSwitch.php"?>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 <script src="../Scripts/main.js"></script>
 </body>
 </html>
