@@ -1,0 +1,57 @@
+.cesium-viewer-toolbar{
+    display:none;
+}
+.cesium-viewer-bottom{
+    display:none;
+}
+
+canvas{
+    border-radius: 10px;
+}
+
+.card {
+    margin-bottom: 20px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    background-color: #f8f9fa;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.card-text dl {
+    margin-bottom: 0;
+}
+
+.card-text dt {
+    font-weight: bold;
+}
+
+.card-text dd {
+    margin-bottom: 10px;
+}
+
+.card-text a {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Custom CSS for grid layout */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.col-md-4 {
+    flex: 1 0 0%;
+    max-width: 30%;
+}
+
+.cesium-container {
+    height: 300px;
+    width: 100%;
+}
