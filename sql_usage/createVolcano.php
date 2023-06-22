@@ -1,6 +1,6 @@
 <?php
 include_once 'sql_usage/SQLConnection.php';
-$tableName = "SAE203_volcano";
+$tableName = "sae203_volcano";
 
 // Check if the table exists
 $result = mysqli_query($conn, "SHOW TABLES LIKE '$tableName'");

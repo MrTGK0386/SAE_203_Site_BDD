@@ -6,7 +6,7 @@ function themeSwitch () {
     let button = document.getElementById('btnSwitch');
     let dad = document.documentElement;
     let state ;
-    window.addEventListener('load', () =>{
+    /*window.addEventListener('load', () =>{
         if (dad.getAttribute('data-bs-theme') != state){
             if (state == 'light') {
                 state = dad.getAttribute('data-bs-theme');
@@ -23,7 +23,7 @@ function themeSwitch () {
                 document.getElementById("icoSwtch").setAttribute('icon','ph:moon-bold');
             }
         }
-    })
+    })*/
 
     button.addEventListener('click',()=>{
         if (dad.getAttribute('data-bs-theme') == 'dark') {

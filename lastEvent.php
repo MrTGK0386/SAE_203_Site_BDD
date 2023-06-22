@@ -32,7 +32,7 @@
     <div class="m-auto w-75 d-flex justify-content-between align-items-center">
         <div class="d-flex flex-nowrap justify-content-between">
             <?php foreach ($events_eq as $index => $event) : ?>
-                <div class="card">
+                <div class="card mx-2">
                     <div>
                         <div id="map-<?php echo $index; ?>" class="cesium-container"></div>
                     </div>
@@ -88,7 +88,7 @@
 
     <div class="m-auto w-75 d-flex justify-content-between align-items-center">
         <?php foreach ($events_meteor as $index => $event) : ?>
-            <div class="card mx-3">
+            <div class="card mx-2">
                 <div>
                     <div id="map-meteor-<?php echo $index; ?>" class="cesium-container"></div>
                 </div>
@@ -163,7 +163,7 @@
 
     <div class="m-auto w-75 d-flex justify-content-between align-items-center">
         <?php foreach ($events_volcano as $index => $event) : ?>
-        <div class="card">
+        <div class="card mx-2">
             <div>
                 <div id="map-volcano-<?php echo $index; ?>" class="cesium-container"></div>
             </div>
@@ -215,6 +215,7 @@
     <?php endforeach; ?>
 
     </div>
+
     <div class="d-flex justify-content-center">
         <button class="btn btn-dark" onclick="location.href='index.php'">Retour</button>
     </div>
