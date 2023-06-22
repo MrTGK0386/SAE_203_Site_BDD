@@ -5,3 +5,32 @@
 .cesium-viewer-fullscreenContainer {
     display: none !important;
 }
+
+.card {
+    margin-bottom: 20px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    background-color: #f8f9fa;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.card-text dl {
+    margin-bottom: 0;
+}
+
+.card-text dt {
+    font-weight: bold;
+}
+
+.card-text dd {
+    margin-bottom: 10px;
+}
+
+.card-text a {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}

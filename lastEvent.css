@@ -39,7 +39,7 @@ canvas{
 }
 
 /* Custom CSS for grid layout */
-.row {
+row {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -47,7 +47,6 @@ canvas{
 }
 
 .col-md-4 {
-    flex: 1 0 0%;
     max-width: 30%;
 }
 
