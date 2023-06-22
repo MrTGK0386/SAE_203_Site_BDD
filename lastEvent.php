@@ -69,6 +69,10 @@
                         shouldAnimate: true,
                         animation: false,
                         timeline: false,
+                        baseLayerPicker: false,
+                        imageryProvider: new Cesium.ArcGisMapServerImageryProvider({
+                            url: 'https://services.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer',
+                        }),
                     });
 
                     addPoint<?php echo $index; ?>(<?php echo $event['location_latitude']; ?>, <?php echo $event['location_longitude']; ?>, 10, Cesium.Color.RED);
@@ -84,9 +88,9 @@
                         });
 
                         // Fly to the entity's position
-                        viewer.flyTo(entity, {
-                            duration: 2, // Animation duration in seconds
-                            offset: new Cesium.HeadingPitchRange(0, Cesium.Math.toRadians(-35), 2000) // Optional offset
+                        viewer.camera.flyTo({
+                            destination: Cesium.Cartesian3.fromDegrees(longitude, latitude, 100000), // Adjust the third parameter (height) to change the zoom level
+                            duration: 8 // Animation duration in seconds
                         });
                     }
                 </script>
@@ -151,6 +155,10 @@
                         shouldAnimate: true,
                         animation: false,
                         timeline: false,
+                        baseLayerPicker: false,
+                        imageryProvider: new Cesium.ArcGisMapServerImageryProvider({
+                            url: 'https://services.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer',
+                        }),
                     });
 
                     addMeteorPoint<?php echo $index; ?>(<?php echo $geofirstValue; ?>, <?php echo $geosecondValue; ?>, 10, Cesium.Color.BLUE);
@@ -166,9 +174,9 @@
                         });
 
                         // Fly to the entity's position
-                        viewer.flyTo(entity, {
-                            duration: 2, // Animation duration in seconds
-                            offset: new Cesium.HeadingPitchRange(0, Cesium.Math.toRadians(-35), 2000) // Optional offset
+                        viewer.camera.flyTo({
+                            destination: Cesium.Cartesian3.fromDegrees(longitude, latitude, 100000), // Adjust the third parameter (height) to change the zoom level
+                            duration: 8 // Animation duration in seconds
                         });
                     }
                 </script>
@@ -208,6 +216,10 @@
                         shouldAnimate: true,
                         animation: false,
                         timeline: false,
+                        baseLayerPicker: false,
+                        imageryProvider: new Cesium.ArcGisMapServerImageryProvider({
+                            url: 'https://services.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer',
+                        }),
                     });
 
                     addVolcanoPoint<?php echo $index; ?>(<?php echo $event['latitude']; ?>, <?php echo $event['longitude']; ?>, 10, Cesium.Color.ORANGE);
@@ -223,8 +235,9 @@
                             }
                         });
 
-                        viewer.flyTo(entity, {
-                            offset: new Cesium.HeadingPitchRange(0, Cesium.Math.toRadians(-35), 2000) // Optional offset
+                        viewer.camera.flyTo({
+                            destination: Cesium.Cartesian3.fromDegrees(longitude, latitude, 100000), // Adjust the third parameter (height) to change the zoom level
+                            duration: 8 // Animation duration in seconds
                         });
                     }
                 </script>
@@ -233,7 +246,7 @@
     </div>
 
     <br>
-    <button class="btn btn-dark" onclick="location.href='../editEventList.php'">Retour</button>
+    <button class="btn btn-dark" onclick="location.href='index.php'">Retour</button>
 
 </body>
 </html>
