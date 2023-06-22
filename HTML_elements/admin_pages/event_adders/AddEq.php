@@ -1,20 +1,32 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>Edit Event Page</title>
+    <title>Modifier les tremblements de terre</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 </head>
+
 <body class="d-flex flex-column min-vh-100">
     <?php
     include_once '../../../sql_usage/SQLConnection.php';
-    
+
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (isset($_POST['action'])) {
             $action = $_POST['action'];
 
             if ($action === 'create') {
-                if (isset($_POST['gap'], $_POST['magnitude'], $_POST['significance'], $_POST['depth'], $_POST['distance'], $_POST['fullLocation'], $_POST['latitude'], $_POST['longitude'], $_POST['locationName'], $_POST['day'], $_POST['epoch'], $_POST['fullTime'], $_POST['hour'], $_POST['minute'], $_POST['month'], $_POST['second'], $_POST['year'])) {
+                $requiredFields = ['gap', 'magnitude', 'significance', 'depth', 'distance', 'fullLocation', 'latitude', 'longitude', 'locationName', 'day', 'epoch', 'fullTime', 'hour', 'minute', 'month', 'second', 'year'];
+
+                $allFieldsProvided = true;
+                foreach ($requiredFields as $field) {
+                    if (!isset($_POST[$field]) || empty($_POST[$field])) {
+                        $allFieldsProvided = false;
+                        break;
+                    }
+                }
+
+                if ($allFieldsProvided) {
                     $gap = $_POST['gap'];
                     $magnitude = $_POST['magnitude'];
                     $significance = $_POST['significance'];
@@ -34,30 +46,16 @@
                     $year = $_POST['year'];
 
                     createEvent($conn, $gap, $magnitude, $significance, $depth, $distance, $fullLocation, $latitude, $longitude, $locationName, $day, $epoch, $fullTime, $hour, $minute, $month, $second, $year);
+                } else {
+                    echo "<script>alert('Veuillez remplir tout les champs, si vous n avez pas la valeur mettre NULL dans le champ.')</script>";
                 }
             }
         }
     }
 
-    // Function to retrieve all rows from the earthquake table
-    function getEvents($conn) {
-        $tableName = "sae203_eq";
-        $query = "SELECT * FROM $tableName";
-        $result = mysqli_query($conn, $query);
 
-        if (!$result) {
-            die("Error executing query: " . mysqli_error($conn));
-        }
-
-        $events = mysqli_fetch_all($result, MYSQLI_ASSOC);
-        mysqli_free_result($result);
-
-        return $events;
-    }
- 
-
-    // Function to create a new event
-    function createEvent($conn, $gap, $magnitude, $significance, $depth, $distance, $fullLocation, $latitude, $longitude, $locationName, $day, $epoch, $fullTime, $hour, $minute, $month, $second, $year) {
+    function createEvent($conn, $gap, $magnitude, $significance, $depth, $distance, $fullLocation, $latitude, $longitude, $locationName, $day, $epoch, $fullTime, $hour, $minute, $month, $second, $year)
+    {
         $tableName = "sae203_eq";
         $gap = mysqli_real_escape_string($conn, $gap);
         $magnitude = mysqli_real_escape_string($conn, $magnitude);
@@ -84,15 +82,13 @@
             die("Error creating event: " . mysqli_error($conn));
         }
 
-        header("Location: ".$_SERVER['PHP_SELF']);
+        header("Location: " . $_SERVER['PHP_SELF']);
         exit();
     }
 
-    // Display the earthquake table
-    $events = getEvents($conn);
     ?>
     <div class="m-auto">
-        <h2>Create New Event</h2>
+        <h2>Ajouter un tremblement de terre</h2>
 
 
         <form class="form d-flex flex-column" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
@@ -172,15 +168,16 @@
                 </div>
             </div>
             <div class="m-auto">
-                <input class="btn btn-primary" type="submit" value="Create">
+                <input class="btn btn-success" type="submit" value="Ajouter">
             </div>
+
         </form>
-        <button class="btn btn-primary m-auto" onclick="location.href='../addEventList.php'">Ajouter d'autres événements.</button>
+        <div class="m-auto mt-2">
+            <button class="btn btn-primary m-auto" onclick="location.href='../addEventList.php'">Ajouter d'autres événements.</button>
+        </div>
     </div>
 
 
 </body>
+
 </html>
-
-
-
