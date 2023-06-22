@@ -74,12 +74,19 @@
                     addPoint<?php echo $index; ?>(<?php echo $event['location_latitude']; ?>, <?php echo $event['location_longitude']; ?>, 10, Cesium.Color.RED);
 
                     function addPoint<?php echo $index; ?>(latitude, longitude, size, color) {
-                        map<?php echo $index; ?>.entities.add({
+                        var viewer = map<?php echo $index; ?>;
+                        var entity = viewer.entities.add({
                             position: Cesium.Cartesian3.fromDegrees(longitude, latitude),
                             point: {
                                 pixelSize: size,
                                 color: color
                             }
+                        });
+
+                        // Fly to the entity's position
+                        viewer.flyTo(entity, {
+                            duration: 2, // Animation duration in seconds
+                            offset: new Cesium.HeadingPitchRange(0, Cesium.Math.toRadians(-35), 2000) // Optional offset
                         });
                     }
                 </script>
@@ -149,12 +156,19 @@
                     addMeteorPoint<?php echo $index; ?>(<?php echo $geofirstValue; ?>, <?php echo $geosecondValue; ?>, 10, Cesium.Color.BLUE);
 
                     function addMeteorPoint<?php echo $index; ?>(latitude, longitude, size, color) {
-                        meteorMap<?php echo $index; ?>.entities.add({
+                        var viewer = meteorMap<?php echo $index; ?>;
+                        var entity = viewer.entities.add({
                             position: Cesium.Cartesian3.fromDegrees(longitude, latitude),
                             point: {
                                 pixelSize: size,
                                 color: color
                             }
+                        });
+
+                        // Fly to the entity's position
+                        viewer.flyTo(entity, {
+                            duration: 2, // Animation duration in seconds
+                            offset: new Cesium.HeadingPitchRange(0, Cesium.Math.toRadians(-35), 2000) // Optional offset
                         });
                     }
                 </script>
@@ -199,12 +213,18 @@
                     addVolcanoPoint<?php echo $index; ?>(<?php echo $event['latitude']; ?>, <?php echo $event['longitude']; ?>, 10, Cesium.Color.ORANGE);
 
                     function addVolcanoPoint<?php echo $index; ?>(latitude, longitude, size, color) {
-                        volcanoMap<?php echo $index; ?>.entities.add({
+                        var viewer = volcanoMap<?php echo $index; ?>;
+
+                        var entity = viewer.entities.add({
                             position: Cesium.Cartesian3.fromDegrees(longitude, latitude),
                             point: {
                                 pixelSize: size,
                                 color: color
                             }
+                        });
+
+                        viewer.flyTo(entity, {
+                            offset: new Cesium.HeadingPitchRange(0, Cesium.Math.toRadians(-35), 2000) // Optional offset
                         });
                     }
                 </script>
