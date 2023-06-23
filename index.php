@@ -46,7 +46,6 @@
                         color: color // Set the desired point color
                     }
                 });
-
             }
 
 
@@ -60,7 +59,7 @@
         }
         while ($row = mysqli_fetch_assoc($resultat)) {
             if ($row['impact_magnitude'] >1){
-                echo"<script>addPoint($row[location_latitude], $row[location_longitude],  10, Cesium.Color.RED);</script>";
+                echo"<script>addPoint($row[location_latitude], $row[location_longitude],  10, Cesium.Color.BLUE);</script>";
             }
 
             else{

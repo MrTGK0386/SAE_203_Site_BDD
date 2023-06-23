@@ -150,7 +150,9 @@
                             pixelSize: size,
                             color: color
                         }
+                        
                     });
+                    
 
                     // Fly to the entity's position
                     viewer.camera.flyTo({
