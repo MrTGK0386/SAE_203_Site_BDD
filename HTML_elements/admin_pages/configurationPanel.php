@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-  <title>Panneau de configuration</title>
+  
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>  
+<title>Panneau de configuration</title>
   <link rel="stylesheet" href="styles/configurationPanel.css">
 </head>
 <body>
@@ -14,6 +16,7 @@
     </div>
   </div>
   <div class="button-container" >
+  
     <div class="button add" onclick="location.href='addEventList.php'">
       <img class="button-icon" src="assets/plus.png" alt="Button 1 Icon">
       <div class="button-name"><p>Ajouter</p></div>

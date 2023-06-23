@@ -7,7 +7,10 @@
 </head>
 <body>
     <?php
+    session_start();
+
     include_once '../../sql_usage/SQLConnection.php';
+    include_once '../../user_hook/protection.php';
     
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -121,7 +124,7 @@
     <thead>
         <tr>
             <th>Username</th>
-            <th>Password</th>
+            <!-- <th>Password</th> -->
             <th>Email</th>
             <th>Admin</th>
             <th>Action</th>
@@ -138,12 +141,12 @@
                             <input type="text" class="form-control" name="username" value="<?php echo $user['username']; ?>">
                         </div>
                 </td>
-                <td>
+                <!-- <td>
                     <div class="input-group">
                         <input type="hidden" name="password" value="<?php echo $user['password']; ?>">
                         <input type="text" class="form-control" name="password" value="<?php echo $user['password']; ?>">
                     </div>
-                </td>
+                </td> -->
                 <td>
                     <div class="input-group">
                         <input type="hidden" name="email" value="<?php echo $user['email']; ?>">
@@ -196,7 +199,7 @@
                 </td>
                 <td>
                     <div class="input-group">
-                        <input type="text" class="form-control" name="password" placeholder="Password">
+                        <input type="password" class="form-control" name="password" placeholder="Password">
                     </div>
                 </td>
                 <td>

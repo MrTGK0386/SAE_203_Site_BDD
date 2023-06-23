@@ -1,7 +1,13 @@
+<?php
+    session_start();
+
+    include_once '../../../user_hook/protection.php';
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Edit Event Page</title>
+    <title>Supprimer des tremblements de terre</title>
 </head>
 <body>
     <?php

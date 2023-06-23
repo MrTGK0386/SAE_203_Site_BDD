@@ -1,3 +1,12 @@
+<?php
+    session_start();
+
+    include_once '../../../user_hook/protection.php';
+?>
+
+
+
+
 <!DOCTYPE html>
 <html>
 
@@ -16,7 +25,7 @@
             $action = $_POST['action'];
 
             if ($action === 'create') {
-                $requiredFields = ['volcano_name', 'magnitude', 'significance', 'depth', 'distance', 'fullLocation', 'latitude', 'longitude', 'locationName', 'day', 'epoch', 'fullTime', 'hour', 'minute', 'month', 'second', 'year'];
+                $requiredFields = ['volcano_name'];
 
                 $allFieldsProvided = true;
                 foreach ($requiredFields as $field) {
@@ -56,7 +65,6 @@
         header("Location: " . $_SERVER['PHP_SELF']);
         exit();
     }
-
     ?>
     <div class="m-auto">
         <h2>Ajouter un volcan</h2>
