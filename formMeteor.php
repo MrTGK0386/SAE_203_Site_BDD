@@ -1,3 +1,4 @@
+<?php include "sql_usage/SQLConnection.php" ?>
 <div class="blocFiltre">
     <br>
         <form classe="filtrage" method="post">
