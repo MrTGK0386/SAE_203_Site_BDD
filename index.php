@@ -56,7 +56,7 @@
         include_once 'sql_usage/SQLconnection.php';
         ?>
     </div>
-    <div id="filterContainer" class="p-5">
+    <div id="filterContainer" class="p-5" <?php if (!isset($_SESSION['admin'])) { echo ' style="display: none; !important"'; } ?>>
         <div class="d-flex justify-content-between">
             <button class="btn btn-info" id="bt_volcan" >Filtrer les Volcans</button>
             <button class="btn btn-info" id="bt_seisme" >Filtrer les Seisme</button>

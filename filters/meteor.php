@@ -17,9 +17,6 @@
             $massM = 0;
         }
 
-        echo "$charge\n";
-        echo "$yearM\n";
-        echo "$massM\n";
 
         $stmtM = mysqli_prepare($conn, $reqM);
         mysqli_stmt_bind_param($stmtM, 'idi', $yearM, $massM, $charge);
@@ -45,6 +42,5 @@
             $cb += 1;
             echo"<script>addPoint('$latitude', '$longitude', 4, Cesium.Color.BLACK);</script>";
         }
-        echo"$cb"
 ?>
 
