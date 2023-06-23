@@ -10,8 +10,10 @@
 }
 
 #cesiumContainer {
-    height: fit-content;
+    height: 100%;
 }
+
+
 
 #filterContainer {
     width: 50%;

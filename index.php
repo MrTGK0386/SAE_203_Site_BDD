@@ -27,7 +27,7 @@
         <script src="https://cesium.com/downloads/cesiumjs/releases/1.84/Build/Cesium/Cesium.js"></script>
         <script>
             // Set your Cesium ion access token here
-            Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI3NmJlOTBmZS0zMDQ4LTQyNmUtYTViOS04OTEyZDdmZThmMDciLCJpZCI6MTQ4MDA3LCJpYXQiOjE2ODcyNDI5ODR9.5BzgewFG_qqt70bHlei4_AtSAPYm7LZ0Gr32eo_tS3I';
+            Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI1ZGRlNTNhOC0wODJlLTRkMzktOTI4ZS00ODE1ZDAyZmIyOGIiLCJpZCI6MTQ4NzAxLCJpYXQiOjE2ODc1MjY1ODF9.irFmISao67gQD0eI2bjVyyvaZkpOCdcmHbuWft6v1QY';
 
             // Create a Cesium viewer
             var viewer = new Cesium.Viewer('cesiumContainer', {
@@ -70,7 +70,22 @@
         }
         ?>
     </div>
-    <div id="filterContainer"></div>
+    <div id="filterContainer">
+    <?php
+    include 'formVolcan.php';
+
+    include 'formSeisme.php';
+    
+    if (isset($_POST["filterVolcan"])) {
+        include 'filters/volcan.php';
+    }
+
+    if (isset($_POST["filterSeisme"])) {
+        include 'filters/seisme.php';
+    }
+    
+?>
+    </div>
 </div>
 
 <div id="formcaca">
