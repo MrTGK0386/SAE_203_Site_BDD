@@ -1,5 +1,5 @@
 <?php
-include_once 'sql_usage/SQLConnection.php';
+include_once '../sql_usage/SQLConnection.php';
 
 function getEq($conn) {
     $tableName = "sae203_eq";

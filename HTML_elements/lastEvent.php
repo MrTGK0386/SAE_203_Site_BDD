@@ -10,28 +10,27 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link href="https://cesium.com/downloads/cesiumjs/releases/1.106/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
 
-    <link href="style.css" rel="stylesheet">
-    <link rel="stylesheet" href="lastEvent.css">
+    <link href="../style.css" rel="stylesheet">
+    <link href="../lastEvent.css" rel="stylesheet">
 </head>
 
 <body>
 
     <?php
     session_start();
-    include_once 'sql_usage/createTables.php';
 
-    include_once 'sql_usage/SQLConnection.php';
-    include_once 'lastEventFunctions.php';
+    include_once "../sql_usage/SQLConnection.php";
+    include_once "../Scripts/lastEventFunctions.php";
 
     $events_eq = getEq($conn);
     $events_meteor = getMeteor($conn);
     $events_volcano = getVolcano($conn);
 
-    include_once 'user_hook/header.php'; ?>
+    include_once '../user_hook/header.php'; ?>
 
     <div class="m-5">
 
-    <div class="m-auto w-75 d-flex justify-content-between align-items-center">
+    <div class="m-auto mb-5 w-75 d-flex justify-content-between align-items-center">
         <div class="d-flex flex-nowrap justify-content-between">
             <?php foreach ($events_eq as $index => $event) : ?>
                 <div class="card border-secondary mx-2">
@@ -88,7 +87,7 @@
         </div>
     </div>
 
-    <div class="m-auto w-75 d-flex justify-content-between align-items-center">
+    <div class="m-auto mb-5 w-75 d-flex justify-content-between align-items-center">
         <?php foreach ($events_meteor as $index => $event) : ?>
             <div class="card mx-2">
                 <div>
@@ -163,7 +162,7 @@
         <?php endforeach; ?>
     </div>
 
-    <div class="m-auto w-75 d-flex justify-content-between align-items-center">
+    <div class="m-auto mb-5 w-75 d-flex justify-content-between align-items-center">
         <?php foreach ($events_volcano as $index => $event) : ?>
         <div class="card mx-2">
             <div>
@@ -226,11 +225,11 @@
     </div>
 
 
-    <?php include_once 'HTML_elements/footer.php';
-    include_once "HTML_elements/ligthSwitch.php"; ?>
+    <?php include_once 'footer.php';
+    include_once "lightSwitch.php"; ?>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
-<script src="Scripts/main.js"></script>
+<script src="../Scripts/main.js"></script>
 
 </html>
