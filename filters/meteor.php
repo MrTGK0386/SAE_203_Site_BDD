@@ -1,6 +1,6 @@
 <?php
 
-    $reqM = "SELECT GeoLocation FROM sae203_meteor WHERE `year` > ? AND `mass_(g)` > ? LIMIT ?";
+    $reqM = "SELECT GeoLocation FROM sae203_meteor WHERE `GeoLocation` IS NOT NULL AND `year` > ? AND `year` IS NOT NULL AND `mass_(g)` > ? AND `mass_(g)` IS NOT NULL  LIMIT ?";
         if (isset($_POST["totalM"])){
             $charge = $_POST["totalM"];
         }
@@ -22,33 +22,29 @@
         echo "$massM\n";
 
         $stmtM = mysqli_prepare($conn, $reqM);
-        mysqli_stmt_bind_param($stmtM, 'iid', $charge, $yearM, $massM);
+        mysqli_stmt_bind_param($stmtM, 'idi', $yearM, $massM, $charge);
         mysqli_stmt_execute($stmtM);
         $resultM = mysqli_stmt_get_result($stmtM);
-
-        var_dump($resultM); //le résultat est vide
 
         if (!$resultM) {
             die("Erreur lors de l'exécution de la requête: " . mysqli_error($conn));
         }
 
-        echo"ALED";
+        $cb = 0;
         while ($rowM = mysqli_fetch_assoc($resultM)) {
-            echo"ALED MILIEU";
             $cleanString = str_replace(array('(', ')', ' '), '', $rowM['GeoLocation']);
             
-            echo"ALED V2";
             // Explode the string using the comma as the delimiter
             $values = explode(',', $cleanString);
-            print_r($values);
 
             // Retrieve the first and second values
             $latitude = $values[0];
 
             $longitude = $values[1];
 
-            echo"$longitude";
-            echo"<script>addPoint('$latitude', '$longitude', 4, Cesium.Color.GOLD);</script>";
+            $cb += 1;
+            echo"<script>addPoint('$latitude', '$longitude', 4, Cesium.Color.BLACK);</script>";
         }
+        echo"$cb"
 ?>
 

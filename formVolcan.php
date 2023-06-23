@@ -6,7 +6,7 @@
 
             <!-- RANGE FOR ERUPTION YEAR --->
             <label for="EruptionYear">Date de la dernière éruption</label>
-            <input id="EruptionYear" type="range" name="EruptionYear" min="-10450" max="2023" <?php if (isset($_POST["EruptionYear"])) echo "value=".$_POST["EruptionYear"]?>>
+            <input id="EruptionYear" type="range" name="EruptionYear" min="-10450" max="2023" <?php if (isset($_POST["EruptionYear"])) echo("value=".$_POST["EruptionYear"])?>>
             <input name="textEruptionYear" id="textEruptionYear" placeholder="Choisir une année"></input>
 
             <!-- TEXT FOR COUNTRY --->
