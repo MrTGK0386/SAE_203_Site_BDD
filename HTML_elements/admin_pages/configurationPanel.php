@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="configurationPanel.css">
 </head>
 <body>
+<?php include_once "../../user_hook/protection.php" ;?>
   <div class="container">
     <div class="row justify-content-center">
       <div class="col">
