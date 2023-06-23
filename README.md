@@ -40,3 +40,10 @@ Si vous voulez voir les filtres à leur potentiel maximum (avec du js) vous pouv
 Nous aurions voulu terminer les pages d'administration mais avons du mettre des placeholder à la place et certaines pages n'ont pas un état CSS acceptable et certaines n'ont pas de CSS du tout.
 
 Fait par Etienne Garcia, Julien Pantel, Gaëtan Bondenet.
+
+---
+
+# Accés
+
+Admin : root, root
+User : user, user
