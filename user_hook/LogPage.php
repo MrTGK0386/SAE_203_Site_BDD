@@ -61,7 +61,10 @@
 <body class="d-flex flex-column min-vh-100 container">
 <div class="form-signin m-auto">
     <form method="post" action="">
-        <img src="../assets/rocket_planet.png" alt="Logo" class="rounded-circle " width="64" height="64" ></img>
+        <div class="position-relative">
+            <img src="../assets/rocket_planet.png" alt="Logo" class="rounded-circle" width="64" height="64" ></img>
+
+        </div>
         <h1 class="h3 mb-3 fw-normal">Connectez-vous s'il vous plaît</h1>
         <?php
         if (isset($error)) {
