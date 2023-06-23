@@ -1,6 +1,4 @@
 <?php
-    session_start();
-
     include_once '../../sql_usage/SQLConnection.php';
     include_once '../../user_hook/protection.php';
 ?>
@@ -33,12 +31,12 @@
       <div class="button-name"><p>Tremblements de Terre</p></div>
     </div>
 
-    <div class="button volcano" onclick="alert('Cette partie du site est en construction.\nVeuillez nous excuser pour la gêne occasionnée.')">
+    <div class="button volcano" onclick="location.href='../index.php'">
       <img class="button-icon" src="assets/volcan.png" alt="Button 1 Icon">
       <div class="button-name"><p>Volcans</p></div>
     </div>
 
-    <div class="button meteor" onclick="alert('Cette partie du site est en construction.\nVeuillez nous excuser pour la gêne occasionnée.')">
+    <div class="button meteor" onclick="location.href='../index.php'">
       <img class="button-icon" src="assets/meteorite.png" alt="Button 1 Icon">
       <div class="button-name"><p>Météorites</p></div>
     </div>

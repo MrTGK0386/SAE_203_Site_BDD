@@ -1,7 +1,6 @@
 <?php
-    session_start();
 
-    include_once '../../../user_hook/protection.php';
+    include_once '../../user_hook/protection.php';
 ?>
 
 <!DOCTYPE html>
@@ -11,7 +10,7 @@
 </head>
 <body>
     <?php
-    include_once '../../../sql_usage/SQLConnection.php';
+    include_once '../../sql_usage/SQLConnection.php';
     
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {

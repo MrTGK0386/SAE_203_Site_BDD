@@ -7,7 +7,6 @@
 </head>
 <body>
     <?php
-    session_start();
 
     include_once '../../sql_usage/SQLConnection.php';
     include_once '../../user_hook/protection.php';

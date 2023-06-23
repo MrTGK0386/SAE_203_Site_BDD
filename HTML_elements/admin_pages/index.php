@@ -6,7 +6,7 @@
             
             <div class="central-body">
                 <p class="error">Cette page est en construction !</p>
-                <br><button class="btn btn-primary btn-lg" onclick="location.href='../../../index.php'">Retour</button>
+                <br><button class="btn btn-primary btn-lg" onclick="location.href='../../index.php'">Retour</button>
 
             </div>
             <div class="objects">
