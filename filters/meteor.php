@@ -22,7 +22,7 @@
         echo "$massM\n";
 
         $stmtM = mysqli_prepare($conn, $reqM);
-        mysqli_stmt_bind_param($stmtM, 'sib', $charge, $yearM, $massM);
+        mysqli_stmt_bind_param($stmtM, 'iid', $charge, $yearM, $massM);
         mysqli_stmt_execute($stmtM);
         $resultM = mysqli_stmt_get_result($stmtM);
 
