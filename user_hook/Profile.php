@@ -139,7 +139,7 @@
 
             <div class=" form-floating mb-3 input-group">
                 <span class="input-group-text" id="basic-addon1">Mot de passe</span>
-                <input type="hidden" name="password" value="<?php echo $users['password']; ?>">
+                <input type="hidden" name="password" value="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
                 <input type="password" class=" form-control" name="password" value="<?php echo $users['password']; ?>">
             </div>
 
