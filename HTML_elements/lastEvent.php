@@ -182,7 +182,7 @@
 
             </ul>
             <div class="card-body">
-                <a href="https://www.openstreetmap.org/mlat=<?php echo $event['latitude']; ?>&mlon=<?php echo $event['longitude']; ?>&zoom=13" target="_blank" class="card-link">Ouvrir dans open street map</a>
+                <a href="https://www.openstreetmap.org/?mlat=<?php echo $event['latitude']; ?>&mlon=<?php echo $event['longitude']; ?>&zoom=13" target="_blank" class="card-link">Ouvrir dans open street map</a>
             </div>
         </div>
         </a>
