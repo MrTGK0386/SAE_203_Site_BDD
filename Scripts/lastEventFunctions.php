@@ -34,7 +34,7 @@ function getMeteor($conn) {
 };
 function getVolcano($conn) {
     $tableName = "sae203_volcano";
-    $query = "SELECT * FROM $tableName  WHERE `last_eruption_year` != 'Unknown'  ORDER BY `last_eruption_year` DESC LIMIT 5";
+    $query = "SELECT * FROM $tableName WHERE `last_eruption_year` != 'Unknown' ORDER BY CAST(`last_eruption_year` AS SIGNED) DESC LIMIT 5";
 
     $result = mysqli_query($conn, $query);
 
