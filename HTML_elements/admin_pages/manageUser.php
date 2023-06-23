@@ -17,14 +17,13 @@
             $action = $_POST['action'];
 
             if ($action === 'update') {
-                if (isset($_POST['userId'], $_POST['username'], $_POST['password'], $_POST['email'])) {
+                if (isset($_POST['userId'], $_POST['username'], $_POST['email'])) {
                     $userId = $_POST['userId'];
                     $username = $_POST['username'];
-                    $password = $_POST['password'];
                     $email = $_POST['email'];
                     $admin = isset($_POST['admin']) ? 1 : 0;
 
-                    updateUser($conn, $userId, $username, $password, $email, $admin);
+                    updateUser($conn, $userId, $username, $email, $admin);
                 }
             } elseif ($action === 'delete') {
                 if (isset($_POST['userId'])) {
@@ -63,13 +62,12 @@
     }
 
     // Function to update a user row
-    function updateUser($conn, $userId, $username, $password, $email, $admin) {
+    function updateUser($conn, $userId, $username, $email, $admin) {
         $tableName = "sae203_users";
         $username = mysqli_real_escape_string($conn, $username);
-        $password = mysqli_real_escape_string($conn, $password);
         $email = mysqli_real_escape_string($conn, $email);
     
-        $query = "UPDATE $tableName SET username='$username', password='$password', email='$email', admin=$admin WHERE id=$userId";
+        $query = "UPDATE $tableName SET username='$username', email='$email', admin=$admin WHERE id=$userId";
         $result = mysqli_query($conn, $query);
     
         if (!$result) {
