@@ -7,7 +7,6 @@
     else if ($_SESSION['admin'] != 1){
             header("Location: ../../index.php");
         }
-    else {
-        include_once "../../user_hook/protection.php";
-    }
+    include_once "../headers/ADMINheader.html";
+    
 ?>
