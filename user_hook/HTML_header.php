@@ -1,14 +1,14 @@
 <?php
 if (isset($_SESSION['username'])) {
     if ($_SESSION['admin'] == 1){
-        include_once "headers/headerAdmin.html";
+        include_once "headers/HTMLheaderAdmin.html";
     }
     else{
-        include_once "headers/headerUser.html";
+        include_once "headers/HTMLheaderUser.html";
 
     }
 }else{
-    include_once "headers/headerRandom.html";
+    include_once "headers/HTMLheaderRandom.html";
 
 }
 ?>

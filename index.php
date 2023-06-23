@@ -22,56 +22,58 @@
     <?php  include "user_hook/header.php"; ?>
     <!-- inclusion du header -->
 </div>
+<div id="mainContainerFront" class="d-flex">
+    <div id="cesiumContainer" class="w-75">
+        <script src="https://cesium.com/downloads/cesiumjs/releases/1.84/Build/Cesium/Cesium.js"></script>
+        <script>
+            // Set your Cesium ion access token here
+            Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI3NmJlOTBmZS0zMDQ4LTQyNmUtYTViOS04OTEyZDdmZThmMDciLCJpZCI6MTQ4MDA3LCJpYXQiOjE2ODcyNDI5ODR9.5BzgewFG_qqt70bHlei4_AtSAPYm7LZ0Gr32eo_tS3I';
 
-<div id="cesiumContainer">
-    <script src="https://cesium.com/downloads/cesiumjs/releases/1.84/Build/Cesium/Cesium.js"></script>
-    <script>
-        // Set your Cesium ion access token here
-        Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI3NmJlOTBmZS0zMDQ4LTQyNmUtYTViOS04OTEyZDdmZThmMDciLCJpZCI6MTQ4MDA3LCJpYXQiOjE2ODcyNDI5ODR9.5BzgewFG_qqt70bHlei4_AtSAPYm7LZ0Gr32eo_tS3I';
-
-        // Create a Cesium viewer
-        var viewer = new Cesium.Viewer('cesiumContainer', {
-            shouldAnimate: true,
-            animation: false,
-            timeline: false,
-        });
-
-        // Function to add a point at a given latitude and longitude
-        function addPoint(latitude, longitude, size, color) {
-            
-            viewer.entities.add({
-                position: Cesium.Cartesian3.fromDegrees(longitude, latitude),
-                point: {
-                    pixelSize: size, // Adjust the point size as desired
-                    color: color // Set the desired point color
-                }
+            // Create a Cesium viewer
+            var viewer = new Cesium.Viewer('cesiumContainer', {
+                shouldAnimate: true,
+                animation: false,
+                timeline: false,
             });
 
+            // Function to add a point at a given latitude and longitude
+            function addPoint(latitude, longitude, size, color) {
+
+                viewer.entities.add({
+                    position: Cesium.Cartesian3.fromDegrees(longitude, latitude),
+                    point: {
+                        pixelSize: size, // Adjust the point size as desired
+                        color: color // Set the desired point color
+                    }
+                });
+
+            }
+
+
+        </script>
+        <?php
+        include_once 'sql_usage/SQLconnection.php';
+        $requete = "SELECT * FROM sae203_eq";
+        $resultat = mysqli_query($conn, $requete);
+        if (!$resultat) {
+            die("Erreur lors de l'exécution de la requête: " . mysqli_error($conn));
         }
+        while ($row = mysqli_fetch_assoc($resultat)) {
+            if ($row['impact_magnitude'] >1){
+                echo"<script>addPoint($row[location_latitude], $row[location_longitude],  10, Cesium.Color.RED);</script>";
+            }
 
+            else{
+                echo"<script>addPoint($row[location_latitude], $row[location_longitude],  15, Cesium.Color.GREEN);</script>";
 
-    </script>
-    <?php
-    include_once 'sql_usage/SQLconnection.php';
-    $requete = "SELECT * FROM sae203_eq";
-    $resultat = mysqli_query($conn, $requete);
-    if (!$resultat) {
-        die("Erreur lors de l'exécution de la requête: " . mysqli_error($conn));
-    }
-    while ($row = mysqli_fetch_assoc($resultat)) {
-        if ($row['impact_magnitude'] >1){
-            echo"<script>addPoint($row[location_latitude], $row[location_longitude],  10, Cesium.Color.RED);</script>";
+            }
         }
-
-        else{
-            echo"<script>addPoint($row[location_latitude], $row[location_longitude],  15, Cesium.Color.GREEN);</script>";
-
-        }
-    }
-    ?>
+        ?>
+    </div>
+    <div id="filterContainer"></div>
 </div>
 
-<div>
+<div id="formcaca">
     <div>
         <form action="index.php" method="post">
             Nom de la table : <input type="text" name="nomTable">

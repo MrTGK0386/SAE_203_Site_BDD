@@ -5,3 +5,18 @@
 .cesium-viewer-fullscreenContainer {
     display: none !important;
 }
+#mainContainerFront {
+    height: 73vh;
+}
+
+#cesiumContainer {
+    height: fit-content;
+}
+
+#filterContainer {
+    width: 50%;
+}
+
+#formcaca {
+    display: none;
+}
