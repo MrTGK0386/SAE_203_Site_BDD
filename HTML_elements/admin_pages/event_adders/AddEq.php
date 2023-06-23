@@ -1,6 +1,4 @@
 <?php
-    session_start();
-
     include_once '../../../user_hook/protection.php';
 ?>
 

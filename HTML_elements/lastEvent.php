@@ -50,7 +50,7 @@
 
                     </ul>
                     <div class="card-body">
-                        <a class="card-link" href="https://www.openstreetmap.org/?mlat=<?php echo $event['location_latitude']; ?>&mlong=<?php echo $event['location_longitude']; ?>&zoom=13" target="_blank">Ouvrir dans open street map</a>
+                        <a class="card-link" href="https://www.openstreetmap.org/?mlat=<?php echo $event['location_latitude'];?>&mlon=<?php echo $event['location_longitude']; ?>&zoom=13" target="_blank">Ouvrir dans open street map</a>
                     </div>
                 </div>
                 <script>
@@ -126,7 +126,7 @@
 
                 </ul>
                 <div class="card-body">
-                    <a href="https://www.openstreetmap.org/?mlat=<?php echo $geofirstValue; ?>&mlong=<?php echo $geosecondValue; ?>&zoom=13" target="_blank" class="card-link">Ouvrir dans open street map</a>
+                    <a href="https://www.openstreetmap.org/?mlat=<?php echo $geofirstValue;?>&mlon=<?php echo $geosecondValue;?>&zoom=13" target="_blank" class="card-link">Ouvrir dans open street map</a>
                 </div>
             </div>
             <script>
@@ -180,7 +180,7 @@
 
             </ul>
             <div class="card-body">
-                <a href="https://www.openstreetmap.org/?mlon=<?php echo $event['latitude']; ?>&mlong=<?php echo $event['longitude']; ?>&zoom=13" target="_blank" class="card-link">Ouvrir dans open street map</a>
+                <a href="https://www.openstreetmap.org/mlat=<?php echo $event['latitude']; ?>&mlon=<?php echo $event['longitude']; ?>&zoom=13" target="_blank" class="card-link">Ouvrir dans open street map</a>
             </div>
         </div>
         </a>
