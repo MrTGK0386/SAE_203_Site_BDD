@@ -33,7 +33,7 @@
     <div class="m-auto mb-5 w-75 d-flex justify-content-between align-items-center">
         <div class="d-flex flex-nowrap justify-content-between">
             <?php foreach ($events_eq as $index => $event) : ?>
-                <div class="card border-secondary mx-2">
+                <div class="card mx-2">
                     <div>
                         <div id="map-<?php echo $index; ?>" class="cesium-container card-img-top"></div>
                     </div>
@@ -50,7 +50,7 @@
 
                     </ul>
                     <div class="card-body">
-                        <a class="card-link" href="https://www.openstreetmap.org/#map=13/<?php echo $event['location_latitude']; ?>/<?php echo $event['location_longitude']; ?>" target="_blank">Ouvrir dans open street map</a>
+                        <a class="card-link" href="https://www.openstreetmap.org/?mlat=<?php echo $event['location_latitude']; ?>&mlong=<?php echo $event['location_longitude']; ?>&zoom=13" target="_blank">Ouvrir dans open street map</a>
                     </div>
                 </div>
                 <script>
@@ -126,7 +126,7 @@
 
                 </ul>
                 <div class="card-body">
-                    <a href="https://www.openstreetmap.org/#map=13/<?php echo $geofirstValue; ?>/<?php echo $geosecondValue; ?>" target="_blank" class="card-link">Ouvrir dans open street map</a>
+                    <a href="https://www.openstreetmap.org/?mlat=<?php echo $geofirstValue; ?>&mlong=<?php echo $geosecondValue; ?>&zoom=13" target="_blank" class="card-link">Ouvrir dans open street map</a>
                 </div>
             </div>
             <script>
@@ -180,7 +180,7 @@
 
             </ul>
             <div class="card-body">
-                <a href="https://www.openstreetmap.org/#map=13/<?php echo $event['latitude']; ?>/<?php echo $event['longitude']; ?>" target="_blank" class="card-link">Ouvrir dans open street map</a>
+                <a href="https://www.openstreetmap.org/?mlon=<?php echo $event['latitude']; ?>&mlong=<?php echo $event['longitude']; ?>&zoom=13" target="_blank" class="card-link">Ouvrir dans open street map</a>
             </div>
         </div>
         </a>
