@@ -20,33 +20,35 @@
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $username = $_POST['username'];
         $password = $_POST['password'];
+        $password_hashed = password_hash($password, PASSWORD_BCRYPT);
+    
         $email = $_POST['email'];
-
+    
         if (!$conn) {
             die("La connexion a échoué : " . mysqli_connect_error());
         }
-
+    
         $username = mysqli_real_escape_string($conn, $username);
-        $password = mysqli_real_escape_string($conn, $password);
-
+        $password_hashed = mysqli_real_escape_string($conn, $password_hashed); // Utilisez la variable $password_hashed pour le mot de passe haché
+    
         $checkQuery = "SELECT * FROM sae203_users WHERE username = '$username'";
         $checkResult = mysqli_query($conn, $checkQuery);
-
+    
         if (mysqli_num_rows($checkResult) > 0) {
             $error = "Username already exists";
         } else {
-            $insertQuery = "INSERT INTO sae203_users (username, password, email, admin) VALUES ('$username', '$password', '$email', 0)";
+            $insertQuery = "INSERT INTO sae203_users (username, password, email, admin) VALUES ('$username', '$password_hashed', '$email', 0)"; // Utilisez la variable $password_hashed pour insérer le mot de passe haché dans la requête INSERT
             if (mysqli_query($conn, $insertQuery)) {
                 $_SESSION['username'] = $username;
                 $_SESSION['admin'] = 0;
-
+    
                 header("Location: ../index.php");
                 exit;
             } else {
                 $error = "Error: " . $insertQuery . "<br>" . mysqli_error($conn);
             }
         }
-
+    
         mysqli_close($conn);
     }
     ?>

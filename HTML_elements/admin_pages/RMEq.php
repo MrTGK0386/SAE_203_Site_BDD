@@ -6,6 +6,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
     <title>Supprimer des tremblements de terre</title>
 </head>
 <body>
@@ -140,7 +142,7 @@
                 <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                     <input type="hidden" name="eventId" value="<?php echo $event['id']; ?>">
                     <input type="hidden" name="action" value="delete">
-                    <input type="submit" value="Delete" onclick="return confirm('Are you sure you want to delete this event?')">
+                    <button type="submit" class="btn btn-danger" value="Delete" onclick="return confirm('Voulez vous vraiment supprimer ce tremblement de terre ?')">Supprimer</button>
                 </form>
             </td>
         </tr>
@@ -150,7 +152,7 @@
 
 
 
-    <br><button onclick="location.href='deleteEventList.php'">Retour</button>
+    <br><button  class="btn btn-dark" onclick="location.href='deleteEventList.php'">Retour</button>
 
 </body>
 </html>
