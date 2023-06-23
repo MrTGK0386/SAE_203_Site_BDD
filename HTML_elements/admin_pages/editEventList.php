@@ -14,7 +14,7 @@
 <head>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
   <title>Gestion des événements</title>
-  <link rel="stylesheet" href="styles/configurationPanel.css">
+  <link rel="stylesheet" href="configurationPanel.css">
 </head>
 <body>
 
@@ -28,7 +28,7 @@
     </div>
   </div>
   <div class="button-container" >
-    <div class="button eq" onclick="location.href='event_editors/EarthQuake.php'">
+    <div class="button eq" onclick="location.href='EarthQuake.php'">
       <img class="button-icon" src="assets/eq.png" alt="Button 1 Icon">
       <div class="button-name"><p>Tremblements de Terre</p></div>
     </div>
