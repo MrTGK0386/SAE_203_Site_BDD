@@ -21,24 +21,24 @@
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $username = $_POST['username'];
         $password = $_POST['password'];
-    
+
         session_unset();
         session_destroy();
         session_start();
-    
+
         if (!$conn) {
             die("La connexion a échoué : " . mysqli_connect_error());
         }
-    
+
         $username = mysqli_real_escape_string($conn, $username);
-    
+
         $sql = "SELECT * FROM sae203_users WHERE username = '$username'";
         $result = mysqli_query($conn, $sql);
-    
+
         if (mysqli_num_rows($result) === 1) {
             $row = mysqli_fetch_assoc($result);
             $hashedPassword = $row['password']; // Récupérer le mot de passe haché depuis la base de données
-    
+
             if (password_verify($password, $hashedPassword)) {
                 $_SESSION['username'] = $username;
                 $_SESSION['admin'] = $row['admin']; // Stocker l'état d'administrateur dans la session
@@ -50,24 +50,24 @@
         } else {
             $error = "Il y a une erreur dans votre pseudo ou votre mot de passe";
         }
-    
+
         mysqli_close($conn);
     }
-    
+
 
     ?>
 </head>
 
 <body class="d-flex flex-column min-vh-100 container">
-    <div class="form-signin m-auto">
-        <form method="post" action="">
-            <iconify-icon icon="ion:logo-css3" alt="Logo" class="rounded-circle" width="32" height="32"></iconify-icon>
-            <h1 class="h3 mb-3 fw-normal">Connectez-vous s'il vous plaît</h1>
-            <?php
-            if (isset($error)) {
-                echo '<div class="mt-5 mb-3 text-danger">' . $error . '</div>';
-            }
-            ?>
+<div class="form-signin m-auto">
+    <form method="post" action="">
+        <img src="../assets/rocket_planet.png" alt="Logo" class="rounded-circle " width="64" height="64" ></img>
+        <h1 class="h3 mb-3 fw-normal">Connectez-vous s'il vous plaît</h1>
+        <?php
+        if (isset($error)) {
+            echo '<div class="mt-5 mb-3 text-danger">' . $error . '</div>';
+        }
+        ?>
 
             <div class="form-floating mb-3">
                 <input type="text" class="form-control" id="username" name="username" placeholder="Xx_DarkTitouanDu34_xX" required>
