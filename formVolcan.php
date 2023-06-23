@@ -100,3 +100,4 @@ textElevation.addEventListener("input", function () {
     elevationIndicator.value = alti;
 });
 </script>
+

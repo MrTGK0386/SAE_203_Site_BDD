@@ -54,21 +54,6 @@
         </script>
         <?php
         include_once 'sql_usage/SQLconnection.php';
-        $requete = "SELECT * FROM sae203_eq";
-        $resultat = mysqli_query($conn, $requete);
-        if (!$resultat) {
-            die("Erreur lors de l'exécution de la requête: " . mysqli_error($conn));
-        }
-        while ($row = mysqli_fetch_assoc($resultat)) {
-            if ($row['impact_magnitude'] >1){
-                echo"<script>addPoint($row[location_latitude], $row[location_longitude],  10, Cesium.Color.BLUE);</script>";
-            }
-
-            else{
-                echo"<script>addPoint($row[location_latitude], $row[location_longitude],  15, Cesium.Color.GREEN);</script>";
-
-            }
-        }
         ?>
     </div>
     <div id="filterContainer" class="p-5">
@@ -90,6 +75,10 @@
     if (isset($_POST["filterSeisme"])) {
         include 'filters/seisme.php';
     }
+
+    if (isset($_POST["filterMeteor"])) {
+        include 'filters/meteor.php';
+    }
     
 ?>
     </div>
@@ -104,3 +93,4 @@
 <script src="Scripts/main.js"></script>
 </body>
 </html>
+
