@@ -10,6 +10,12 @@
     <?php
     session_start();
     include_once '../sql_usage/SQLConnection.php';
+    if (!isset($_SESSION['admin'])){
+
+        header("Location: ../index.php");
+    }
+
+
 
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -29,6 +35,12 @@
                 if (isset($_POST['userId'])) {
                     $userId = $_POST['userId'];
     
+                    deleteUser($conn, $userId);
+                }
+            }elseif ($action === 'delete') {
+                if (isset($_POST['userId'])) {
+                    $userId = $_POST['userId'];
+
                     deleteUser($conn, $userId);
                 }
             }
@@ -54,6 +66,19 @@
         mysqli_free_result($result);
 
         return $user;
+    }
+
+    function deleteUser($conn, $userId) {
+        $tableName = "sae203_users";
+        $query = "DELETE FROM $tableName WHERE id=$userId";
+        $result = mysqli_query($conn, $query);
+
+        if (!$result) {
+            die("Erreur lors de la suppression de l'utilisateur: " . mysqli_error($conn));
+        }
+
+        header("Location: logout.php");
+        exit();
     }
     
     
@@ -85,6 +110,7 @@
     }
     
     // Display the user table
+    $username = $_SESSION["username"];
     $users = getUser($conn, $username);
     
     ?>
