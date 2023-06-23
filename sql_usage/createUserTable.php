@@ -29,6 +29,13 @@ if (mysqli_num_rows($result) > 0) {
     // mysqli_stmt_bind_param($statement2,"isssi",$username,$password,$email,$admin) or die(mysqli_error($conn));
     mysqli_stmt_execute($statement2) or die(mysqli_error($conn));
 
+    $passworduser = "user";
+    $HashedPSWDuser = password_hash($passworduser, PASSWORD_BCRYPT);
+    $addUser = "INSERT INTO $tableName (username, password, email, admin) VALUES ('user', '$HashedPSWDuser', 'user@gmail.com', 0)";
+    $stattement3 = mysqli_prepare($conn,$addUser) or die(mysqli_error($conn));
+    // mysqli_stmt_bind_param($stattement3,"isssi",$username,$password,$email,$admin) or die(mysqli_error($conn));
+    mysqli_stmt_execute($stattement3) or die(mysqli_error($conn));
+
     //echo "Error creating table: " . mysqli_error($conn);
 }
 
