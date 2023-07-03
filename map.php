@@ -37,7 +37,7 @@
 
         </script>
         <?php
-            include_once 'sql_usage/SQLconnection.php';
+            include_once 'sql_usage/SQLConnection.php';
             $requete = "SELECT * FROM eq";
             $resultat = mysqli_query($conn, $requete);
             if (!$resultat) {

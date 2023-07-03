@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="configurationPanel.css">
 </head>
 <body>
-<?php include_once "../../user_hook/protection.php" ;?>
+<?php include_once "../../user_hook/protection.php";?>
 
 <div class="container d-flex flex-column align-content-center mb-5">
     <h1 class="text-center my-5">Panneau de configuration</h1>
@@ -38,7 +38,7 @@
 </div>
 
 <footer class="pt-5 mt-5">
-    <?php include_once'../footer.php'; include_once "../lightSwitch.php"; ?>
+    <?php include_once '../footer.php'; include_once "../lightSwitch.php"; ?>
 </footer>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
